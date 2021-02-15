@@ -1,0 +1,137 @@
+%Jennifer Pan, August 2011
+
+\documentclass[10pt,letter]{article}
+	% basic article document class
+	% use percent signs to make comments to yourself -- they will not show up.
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+	% packages that allow mathematical formatting
+
+\usepackage{graphicx}
+\usepackage{tikz}
+	% package that allows you to include graphics
+
+\usepackage{setspace}
+	% package that allows you to change spacing
+
+\onehalfspacing
+	% text become 1.5 spaced
+
+\usepackage{fullpage}
+	% package that specifies normal margins
+
+
+\begin{document}
+	% line of code telling latex that your document is beginning
+
+
+\title{ECON501 Problem Set 2}
+
+\author{Nicholas Wu}
+
+\date{Spring 2021}
+	% Note: when you omit this command, the current dateis automatically included
+
+\maketitle
+	% tells latex to follow your header (e.g., title, author) commands.
+
+\section*{Problem 2}
+First, we note that $B$ is strictly dominated by $A$ for the row player ($(10, -4, 5, 0) \gg (9, -6, 3, -2)$). Eliminating $B$, we have that $a$ is dominated by $b$ for the column player, since $(5, 6, -2, 3) \gg (2, 0, -3, 1)$. Among the remaining strategies, $A$ and $C$ are both dominated by $E$ since $(-4, 5, 0) \ll (-2, 6, 2)$ and $(-4, 5, 0.1) \ll (-2, 6, 2)$.
+
+Now, the remaining strategies for the row player are $D$ and $E$, and the remaining column strategies are $b, c, d$. However, we note that the strategy $0.4b + 0.6d$ dominates $c$ since $(-0.8, 1.2) \gg (-1, 1)$. Hence $c$ is strictly dominated.
+
+The remaining strategies $D, E$ and $b, d$ cannot be eliminated further, so these remain.
+
+\section*{Problem 3}
+We first argue playing $0$ is weakly dominated by playing 1. Playing 0 guarantees payoff 0 in any situation. Playing 1 guarantees payoff 1 in any situation (if the other person plays less than 100, then you get 1, and if the other person plays 100, you still get 1). Hence 0 is a weakly dominated strategy, so we eliminate it.
+
+We now argue that the strategy of playing $100$ is weakly dominated by the strategy of playing $99$. If the other player also plays $100$, then $99$ achieves a better payoff ($99 > 50$). Suppose the other player played $99$. Then again playing 99 gives a better payoff than 100, because $50 > 1$. If the other player played $k \in [2, 98]$, then the player gets $100-k$, so playing 99 does equally as well as 100 here. Finally, if the other player played $1$, playing 100 would get payoff 99, and playing $99$ also ensures payoff 99, so for $k \in [1, 98]$ the player does the same playing 99 as 100, and for $k \in [99, 100]$ the player does better playing 99 than playing 100. Hence $100$ is weakly dominated.
+
+We now can iterate this argument. Suppose we have not yet eliminated the strategies from $[50 - x, 50 + x]$, where $x$ is a positive integer. Consider playing $50 - x + 1$ instead of $50 - x$. This guarantees a payoff of at least $50 - x + 1$, since if the other person plays any number less than $50 + x - 1$ the sum is $\le 100$, and the player gets $50 - x + 1$, and if the other person plays $50 + x$, $50 -x + 1$ is the lower bid and hence the player always gets $50 - x + 1$. This is strictly better than playing $50 - x$, which guarantees payoff $50 - x$, so $50 - x$ is weakly dominated by $50 - x + 1$.
+
+Now, after eliminating $50 - x$, we can show $50 + x$ is weakly dominated by $50 + x - 1$. Suppose the other player plays $50 + x$. Playing $50 + x - 1$ guarantees payoff $50 + x - 1 \ge 50$, so playing $50  + x - 1$ is weakly better  in this case. If  the other player plays $50 + x - 1$, then playing $50 + x - 1$ guarantees payoff $50 \ge 50 - x + 1$, so $50 + x - 1$ is also weakly better. If the other player plays anything else from $50 - x + 2$ to $50 + x - 2$, they will have the lower bid and the sum in either case will be greater than 100, so there is no change in payoff from switching to $50 + x - 1$ from $50 + x$.
+Lastly, if the other player plays $50 - x + 1$, switching to $50 + x - 1$ makes the sum $100$, but in either case the payoff is $50 + x - 1$, so there is no change in payoff still here. Thus, $50 - x$ is weakly  dominated by $50 - x + 1$, and now the range of remaining strategies is $[50 - x + 1, 50 + x - 1]$
+
+We can apply our argument iteratively; the only strategy remaining will be playing $50$.
+
+\section*{Problem 4}
+Suppose player $1$ plays $pU + (1-p)D$, and player 2 plays $qL + (1-q)R$. The payoffs of player 3's actions are then:
+\begin{center}
+\begin{tabular}{  c | c  }
+ A & $ 9pq $ \\ \hline
+ B & $ 9p(1-q) + 9(1-p)q = 9p + 9q - 18pq$ \\ \hline
+ C & $ 9(1-p)(1-q) = 9 - 9p - 9q + 9pq$ \\ \hline
+ D & $ 6pq + 6(1-p)(1-q) = 6 - 6p - 6q + 12pq$
+\end{tabular}
+\end{center}
+Suppose, for sake of contradiction, D is the best reply. For D to be better than A, we have
+\[ 6 - 6p - 6q + 12pq > 9pq \]
+\[ 2 - 2p - 2q + pq > 0 \]
+\[ \frac{1}{2}pq + 1 > p + q \]
+\[ p - \frac{1}{2}pq  < 1 - q \]
+\[ p\left(1 - \frac{1}{2}q \right) < 1 - q \]
+\[ p < \frac{1-q}{1 - 0.5q} \]
+For D to be better than C,
+\[ 6 - 6p - 6q + 12pq > 9 - 9p - 9q + 9pq \]
+\[ p + q > 1 - pq \]
+\[ p + pq > 1 - q \]
+\[ p(1+q) > 1-q \]
+\[ p > \frac{1-q}{1+q} \]
+For D to be better than B,
+\[ 6 - 6p - 6q + 12pq > 9p + 9q - 18pq \]
+\[ 6 - 15p - 15q + 30pq > 0 \]
+\[ (2/5) - p - q + 2pq > 0 \]
+\[ \frac{2}{5} + 2pq > p + q \]
+\[ p - 2pq < \frac{2}{5} - q \]
+\[ p(1-2q) < \frac{2}{5} - q \]
+For $q < 1/2$, this implies
+\[ p < \frac{0.4 - q}{1 - 2q}\]
+But from a prior condition,
+\[ p > \frac{1-q}{1+q} \]
+But on the region $q \in (0, 1/2)$,
+\[ \frac{1-q}{1+q} > \frac{0.4 - q}{1 - 2q} \]
+So we have a contradiction.
+
+Similarly, if $q > 1/2$,
+\[ p(1-2q) < \frac{2}{5} - q  \]
+\[ p > \frac{0.4 - q}{1 - 2q} \]
+But
+\[ p < \frac{1-q}{1 - 0.5q} \]
+And on $q \in (1/2, 1)$
+\[ \frac{0.4 - q}{1 - 2q}  >  \frac{1-q}{1 - 0.5q} \]
+Hence we have a contradiction.
+
+Lastly, if $q = 1/2$, then the payoffs become
+\begin{center}
+\begin{tabular}{  c | c  }
+ A & $ 4.5p $ \\ \hline
+ B & $ 4.5 $ \\ \hline
+ C & $ 9(1-p)(1-q) = 4.5 - 4.5p$ \\ \hline
+ D & $ 6pq + 6(1-p)(1-q) = 3$
+\end{tabular}
+And B is strictly better than D, a contradiction again.
+\end{center}
+
+Therefore, D cannot be a best reply, no matter what values $q$ takes. However, $D$ is not dominated. Consider any arbitrary other strategy $pA + qB + rC + (1-p-q-r)D$. In order for this to dominate $D$, it must be better than $D$ in every situation. The payoffs of this strategy for $(U, L)$ are:
+\[ 9p + 6(1-p-q-r) = 6 + 3p - 6q - 6r \]
+For $(U, R)$ and $(D,L)$, the payoffs are just
+\[ 9q \]
+For $(D, R)$ the payoff is
+\[ 9r + 6(1-p-q-r) = 6 - 6p - 6q + 3r \]
+We need these to be better than $D$ in each case, so
+\[ 6 + 3p - 6q - 6r \ge 6 \]
+\[ 9q \ge 0 \]
+\[ 6 - 6p - 6q + 3r \ge 6 \]
+From the first and third inequalities, we get
+\[ p \ge 2q + 2r \]
+\[ r \ge 2p + 2q \]
+\[ p + r \ge 2(p + r) + 4q \]
+But then we get
+\[ p + r + 4q \le 0 \]
+which is only possible if $p = r = q = 0$, which is just $D$ itself. Hence no other strategy dominates $D$.
+
+\section*{Problem 5}
+If I have time.
+\end{document}
+	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
