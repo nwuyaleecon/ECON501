@@ -6,6 +6,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{enumitem}
 	% packages that allow mathematical formatting
 
 \usepackage{graphicx}
@@ -132,6 +133,30 @@ But then we get
 which is only possible if $p = r = q = 0$, which is just $D$ itself. Hence no other strategy dominates $D$.
 
 \section*{Problem 5}
-If I have time.
+\begin{enumerate}[label=(\alph*)]
+\item If either player has a strategy guaranteeing a win, then that player $i$ by definition has a maximin strategy $s_i$ such that $u_i(s_i, s_j) \ge 1$ for all $s_j$. Since the utility can only be $0$ or $\pm 1$, this implies $u_i(s_i, s_j) = 1$, for any $s_j$. Hence $s_i$ weakly dominates any other strategy, and so $D(N)$ has $u_i$ constant and equal to 1, and hence $u_j$ is constant and equal to $-1$, so this is dominance solvable in one step.
+\item Now, assume that neither player can guarantee a win, and hence each player can enforce 0. \begin{enumerate}[label=(\roman*)]
+  \item Fix the strategy profile $(x_1, x_2)$ and define $x_{h^*}$ as in the problem. By definition, $v_1(x_{h^*}) \neq 0$, so it is either 1 or $-1$. Suppose, for sake of contradiction, that it is $1$. Then for the subgame $\Gamma(x_{h^*})$, there exists some strategy $s_1'$ within this subgame that is winning, i.e. achieves $1$, since $v_1(x_{h^*}) = 1$ by our assumption. Consider the alternative strategy
+  \[ s^*_1(x) = \begin{cases}
+    s_1(x) & x \not \in X(x_{h^*}) \\
+    s'_1(x) & x \in X(x_{h^*})
+  \end{cases} \]
+  Then clearly $s^*_1$ does equally as good as $s_1$ if the subtree $x_{h^*}$ is never reached, and since it achieves $1$ in that subtree, it does weakly better in that subtree. Hence $s^*_1$ dominates $s_1$ in $N$, a contradiction. Therefore $v_1(x_{h^*}) = -1$.
+  \item If it were player 2's turn at $x_{h^* - 1}$, then player 2 could take an action that would force $1$ to $x_{h^*}$, and we know  that since $v_1(x_h^*) = -1$, this is optimal for player 2. That implies that $v_1(x_{h^*-1}) = -1$, which is false, since we know by construction that $v_1(x_{h^* - 1}) = 0$. Hence it must be player 1's turn at $x_{h^* - 1}$.
+  \item \begin{enumerate}[label=(\Alph*)]
+    \item Suppose not, that some $s_2' \in D(N)$ is such that $u_1(s_1, s_2') > u_1(s_1', s_2')$. Note the paths dictated by $s_1, s_2'$ and $s_1', s_2'$ must reach $x_{h^*-1}$, since $s_1'$ is equal to $s_1$ outside $\Gamma (x_{h^*-1})$ and $u_1(s_1', s_2') \neq u_1(s_1, s_2')$.
+    Since $s_1'$ is maximin on $\Gamma (x_{h^*-1})$, and since $v_1(x_{h^*-1}) = 0$, we have $u_1(s_1', s_2') \ge 0$, which means that $u_1(s_1, s_2') = 1$. Recall that $v_1(x_{h^*}) = -1$, as proved before, so $v_2(x_{h^*}) = 1$. Pick a winning strategy $s_2^*$ in $\Gamma(x_{h^*})$.
+    Consider $s_2^*$ such that
+    \[ s_2''(x) = \begin{cases}
+      s_2^*(x) & x \not \in X(x_{h^*}) \\
+      s_2'(x) & x \in X(x_{h^*})
+    \end{cases} \]
+    Clearly, since $s''_2$ equals $s_2'$ outside of $\Gamma(x_{h^*})$, it does equally well outside $\Gamma(x_{h^*})$. However, since $s_2^*$ is winning in $\Gamma(x_{h^*})$, and $u_2(s_1, s_2') = -1$, $u_2(s_1, s_2'') > u_2(s_1, s_2')$, and hence $s_2'$ is dominated by $s_2''$ in $N$, so we have a contradiction that $s_2' \in D(N)$.
+    Hence $s_1'$ is at least as good as $s_1$ against any strategy in $D(N)$.
+    \item When player 2 plays $s_2$, we note that $s_1'$ and $s_1$ will both reach $\Gamma(x_{h^*-1})$. This implies by construction of $s_1'$, $u_1(s_1', s_2) = 0$, since $s_1'$ plays maximin in $\Gamma(x_{h^*-1})$ and $v_1(x_{h^*-1}) = 0$. However, $u_1(s_1, s_2) = -1$, so $s_1$ is dominated by $s_1'$, and hence is dominated in $D(N)$.
+
+  \end{enumerate}
+\end{enumerate}
+\end{enumerate}
 \end{document}
 	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
