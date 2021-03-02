@@ -1,0 +1,210 @@
+%Jennifer Pan, August 2011
+
+\documentclass[10pt,letter]{article}
+	% basic article document class
+	% use percent signs to make comments to yourself -- they will not show up.
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+	% packages that allow mathematical formatting
+
+\usepackage{graphicx}
+\usepackage{tikz}
+	% package that allows you to include graphics
+
+\usepackage{setspace}
+	% package that allows you to change spacing
+
+\onehalfspacing
+	% text become 1.5 spaced
+
+\usepackage{fullpage}
+	% package that specifies normal margins
+
+
+\begin{document}
+	% line of code telling latex that your document is beginning
+
+
+\title{ECON501 Problem Set 4}
+
+\author{Nicholas Wu}
+
+\date{Spring 2021}
+	% Note: when you omit this command, the current dateis automatically included
+
+\maketitle
+	% tells latex to follow your header (e.g., title, author) commands.
+
+\section*{Problem 2}
+\begin{enumerate}[label=(\alph*)]
+\item We can check by inspection there are no pure strategy Nash. Hence, the Nash eq must be mixed. Suppose the column player is playing $p L + q M + (1-p-q)R$. Then the strategy payoffs for the row player are
+\[5q + 4(1-p-q) = 4 + q - 4p \]
+\[4p + 5(1-p-q) = 5 - p - 5q \]
+\[5p + 4q \]
+Then the only assignment of $p, q$ for which there is a nonunique maximum value of these is $p = q = 1/3$. Similarly, the Nash eq strategy for the row player is also to play $1/3$ over everything. Hence, the Nash equilibrium has each player pick an available strategy uniformly at random, and the expected Nash payoffs are $(3,3)$.
+\item Consider assigning $1/6$ probability each to $\{ UM, UR, ML, MR, DL, DM \}$. We show this is a correllated equilibrium. To do this, we just have to show no player has incentive to deviate from their prescribed strategy. Consider the row player. If the row player is prescribed $U$, then by Bayes' rule, the column player is playing $M$ or $R$ with equal probability. Then clearly playing the prescribed $U$ gives expected payoff $4.5$, which is better than $M$ (2.5) and $D$ (2). Similarly, when the row player is prescribed $M$, as long as the column player is following the equilibrium, playing $M$ gives payoff $4.5$, which is higher than $U$ or $D$. Again, when prescribed $D$, the column player will be playing $L$ or $M$ with equal probability, so the optimal strategy for the row player is to just play $D$. The argument for the column player is symmetric. In this case, both players get expected payoff $4.5 > 4$.
+\item We'll take player 1 to be the row player (the game is symmetric, so it really doesn't matter). The requirement for correllated equilibrium is that each player has no incentive to deviate from the prescribed strategy. We first find constraints based on player 2's incentives. If player 2 is told to play $L$, suppose the posterior belief of player 2 is over player 1's strategies is $pU + qM + (1-p-q)D$. We have the following constraints on the posterior belief:
+\[ 5q + 4(1-p-q) \ge 4p + 5(1-p-q) \]
+\[ 5q + 4(1-p-q) \ge 5p + 4q \]
+Simplifying,
+\[ 6q \ge 3p + 1 \]
+\[ 4 - 9p \ge 3q  \]
+So we have
+\[ 8 - 18p \ge 6q \ge 3p + 1  \]
+\[ \frac{4}{3} - 3p \ge q \ge \frac{1}{2}p + \frac{1}{6}  \]
+We need $p \le 1/3$, else $(4/3) - 3p < (1/2)p + (1/6)$. Similarly, we require $q \ge 1/6$ since $p \ge 0$. To maximize player 1's utility, we need to maximize
+\[ 4q + 5(1-p-q) = 5 - 5p - q \]
+Hence we want $p$ and $q$ as small as possible, so this requires $p = 0$ and $q = 1/6$. We note that the case for when player 2 is told $M$ and $D$ is symmetric (relabeling strategies). Hence the posterior belief of player 2 on each of $L, M, R$ has to be $\{ (0, 1/6, 5/6), (5/6, 0, 1/6), (1/6, 5/6, 0) \} $ over the strategies with positive payouts. So the strategy profile for such a correllated equilibrium is given by
+\[ \frac{1}{6}p ML + \frac{5}{6}p DL  + \frac{5}{6}q UM +  \frac{1}{6}q DM  + \frac{1}{6}(1-p-q) UR + \frac{5}{6}(1-p-q) MR  \]
+
+Now, we need to satisfy the incentive constraint for player 1. Suppose player 1 is told $U$. Then his/her posterior belief over player 2's strategies is \[  \frac{\frac{5}{6}q }{\frac{5}{6}q + \frac{1}{6}(1-p-q)}M + \frac{\frac{1}{6}(1-p-q) }{\frac{5}{6}q + \frac{1}{6}(1-p-q)}R \] Then the incentive constraint requires:
+\[ 5\frac{\frac{5}{6}q }{\frac{5}{6}q + \frac{1}{6}(1-p-q)} + 4\frac{\frac{1}{6}(1-p-q) }{\frac{5}{6}q + \frac{1}{6}(1-p-q)} \ge 5\frac{\frac{1}{6}(1-p-q) }{\frac{5}{6}q + \frac{1}{6}(1-p-q)} \]
+\[ 5\frac{\frac{5}{6}q }{\frac{5}{6}q + \frac{1}{6}(1-p-q)} + 4\frac{\frac{1}{6}(1-p-q) }{\frac{5}{6}q + \frac{1}{6}(1-p-q)} \ge 4\frac{\frac{5}{6}q }{\frac{5}{6}q + \frac{1}{6}(1-p-q)}\]
+Simplifying,
+\[ 5\frac{5}{6}q  + 4\frac{1}{6}(1-p-q) \ge 5\frac{1}{6}(1-p-q)  \]
+\[ 25q  \ge 1-p-q  \]
+Similarly for the other strategies $M$ and $D$, we get the constraints
+\[ 25(1-p-q) \ge p \]
+\[ 25p \ge q \]
+
+Player 1's expected payoff is
+\[ \frac{1}{6}p (4) + \frac{5}{6}p (5)  + \frac{5}{6}q (5) +  \frac{1}{6}q (4)  + \frac{1}{6}(1-p-q) (4)+ \frac{5}{6}(1-p-q) (5)  \]
+\[ = \frac{29}{6}p    + \frac{29}{6}q + \frac{29}{6}(1-p-q) =  \frac{29}{6} \]
+So player 1's expected payoff is maximized regardless of the marginal distribution over the column strategies. Hence the distribution over column strategies merely has to satisfy the incentive constraints:
+\[ 25q  \ge 1-p-q  \]
+\[ 25(1-p-q) \ge p \]
+\[ 25p \ge q \]
+These constrain $p, q, 1-p-q$ to not be too small relative to each other.
+So, for example, the following is a correllated equilibrium giving payoff $29/6$ to player 1:
+\[ \frac{1}{18} ML + \frac{5}{18} DL  + \frac{5}{18} UM +  \frac{1}{18} DM  + \frac{1}{18} UR + \frac{5}{18} MR  \]
+The following is also such a correllated equilibrium:
+\[ \frac{1}{24} ML + \frac{5}{24} DL  + \frac{5}{24} UM +  \frac{1}{24} DM  + \frac{2}{24} UR + \frac{10}{24} MR  \]
+\end{enumerate}
+\section*{Problem 3}
+Let the discount factor be $\delta$. Suppose $n\epsilon = 1$. We want to show that the division $(k\epsilon, (n-k)\epsilon)$ is sustainable as the outcome of a subgame perfect Nash equilibrium. We construct a such stationary subgame perfect Nash equilibrium. Suppose both players offer $(k\epsilon, (n-k)\epsilon)$, and player 1 accepts anything granting at least $k\epsilon$ and player 2 accepts anything granting at least $(n-k)\epsilon$. We need to show that this is indeed a subgame perfect Nash equilibrium using the one-shot deviation principle. We consider all potential deviations for both agents. Clearly, player 1 will never want to offer less than $k\epsilon$ for himself/herself, since player 2 would accept only  $(n-k)\epsilon$. Symmstrically, player 2 will never want to offer less than $(n-k)\epsilon$ for himself/herself, since player 1 would accept $k\epsilon$. Additionally, player 1 will never offer more than $k\epsilon$, since this would cause player 2 to reject and player 1 gets payoff $\delta k\epsilon$ after accepting in the next period. Similarly, player 2 will never offer more than $(n-k)\epsilon$, since that would cause player 1 to reject and player 2 gets $\delta(n-k)\epsilon$ in the next period.
+Finally, player 1 does not want to accept less than $k\epsilon$. Accepting less than $k\epsilon$ gives the player at best $(k-1)\epsilon$, where as rejecting anything less and offering $k\epsilon$ (which is accepted) gives payoff $\delta k\epsilon > (k-1)\epsilon$ for $\delta > (k-1)/k$. So for $\delta$ arbitrarily close to 1, this incentive holds, and hence player 1 accepts only $k\epsilon$ or better. Likewise, player 2 accepts $(n-k)\epsilon$ or better, because the alternative $(n-k-1)\epsilon$ is not better than $\delta(n-k)\epsilon$ the player would get the next period. Hence, neither player has a profitable one-shot deviation, and hence this is a subgame perfect Nash equilibrium. Thus, $(k\epsilon, (n-k)\epsilon)$ is sustainable as a SPNE.
+
+The assumption of a continuum action space is critical to Rubinstein's example. In reality, we may expect action spaces to maybe be large, but not infinite, and hence Rubinstein's bargaining problem may not apply.
+
+\section*{Problem 4}
+We first note in this case, the discount factors for each individual are identical.
+
+Let player $i$ offer $a^i = (a^i_1, a^i_2, a^i_3)$, accept any offer which gives more than $v_i$ as first responder, and any offer giving more than $w_i$ as second responder. We need player $i$'s demand to be maximal such that the other players accept. That is, $a^i_{i+1} = v_{i+1}$, $a^i_{i-1} = w_{i-1}$ where the indexes are taken mod 3. Further, since $i-1$ will get offered $v_i$ by $i+1$, so in order for player $i-1$ to be indifferent between accepting the offer of player $i$, we need $\delta v_{i-1} = w_{i-1} $. All together then, the offers are
+\[ a_1 = (1-v_2 - \delta v_3, v_2, \delta v_3) \]
+\[ a_2 = (\delta v_1, 1-\delta v_1-v_3, v_3) \]
+\[ a_3 = (v_1, \delta v_2, 1-v_1-\delta v_2) \]
+Further, we need the $v_i$ to be optimal; if player $i$ wants more than $v_i$, he/she gets $\delta(1-\delta v_{i-1}-v_{i+1})$ if rejecting player $i-1$'s offer. Hence
+\[ v_i = \delta(1-\delta v_{i-1}-v_{i+1}) \]
+By symmetry, since everyone has identical discount factors, $v_1 = v_2 = v_3$, so the constraint ggives
+\[ v = \delta(1 - (1+\delta) v ) \]
+\[ (1/\delta) v = 1 - (1+\delta)v \]
+\[  v = \frac{1}{1/\delta + 1 + \delta } \]
+\[  v = \frac{\delta}{1+ \delta + \delta^2 } \]
+So each player offers
+\[ \frac{1}{1+\delta + \delta^2} \]
+for himself,
+\[ \frac{\delta}{1+\delta + \delta^2} \]
+for the first responder, and
+\[ \frac{\delta^2}{1+\delta + \delta^2} \]
+for the second responder. The first responder accepts anything as good as
+\[ \frac{\delta}{1+\delta + \delta^2} \]
+and the second responder accepts anything as good as
+\[ \frac{\delta^2}{1+\delta + \delta^2} \]
+
+\section*{Problem 5}
+As before, we suppose that a buyer with valuation $v$ buys for price $P$ if $v \ge \lambda P$, $\lambda > 1$, and the firm offers price $\mu\lambda P$ in the period after offering $P$. By one-shot, we need these strategies to be optimal over one-shot deviations. Suppose $P_n$ is offered at time $n$, and buyers with valuation greater than $v_n$ buy at time $n$. Specifically, the offer of price $P_n$ at period $n$ is optimal iff it maximizes:
+\[ \max_p p(v_{n-1}^a - v_n^a) + \delta P_{n+1}(v_n^a - v_{n+1}^a) + ... \]
+\[ \max_p p(\lambda^a P_{n-1}^a - \lambda^a p^a) + \delta P_{n+1}(\lambda^a p^{a} - \lambda^a P_{n+1}^a) + ... \]
+Taking the FOC,
+\[ \lambda^a P_{n-1}^a - (a + 1)\lambda^a p^{a} + a \delta P_{n+1}\lambda^a p^{a- 1} = 0  \]
+\[  P_{n-1}^a - (a + 1) P_n^{a} + a \delta P_{n+1} P_n^{a- 1} = 0  \]
+If $P_n = \mu \lambda P_{n-1}$, and $P_{n+1} = (\mu\lambda)^2 P_{n-1}$, then
+\[  P_{n-1}^a - (a + 1) (\mu \lambda P_{n-1})^{a} + a \delta (\mu\lambda)^2P_{n-1} (\mu\lambda P_{n-1})^{a- 1} = 0  \]
+\[  1- (a + 1) (\mu \lambda )^{a} + a \delta (\mu\lambda )^{a + 1} = 0  \]
+Let $\mu\lambda = \nu$.
+\[  1 -  (a+1)\nu^a + a \delta \nu^{a+1}  = 0   \]
+Note that at $\nu = 0$ the LHS is 1, and at $\nu \to 1$ the LHS is
+\[ 1 - (a+1)\nu^a + a\delta \nu^{a+1} =1 - (a+1) + a\delta = a\delta - a = a(\delta - 1) < 0\]
+Hence, since the LHS is continuous in $\nu$, we have by the intermediate value theorem that at some $\nu \in (0,1)$, the LHS is equal to 0. Thus, we know such a solution $\nu$ exists. Fix that $\nu$. We can check that the first derivative of the LHS is always negative, and hence $\nu$ is unique.
+
+For more constraints on $\mu, \lambda$, we use the fact that optimality for the buyers imply that
+\[ v_{n} - P_n = \delta(v_{n} - P_{n+1}) \]
+\[ \lambda P_n - P_n = \delta(\lambda P_{n} - \mu\lambda P_{n}) \]
+\[ \lambda - 1 = \delta(\lambda  - \mu\lambda ) \]
+\[ \lambda - 1 = \delta\lambda  - \delta \mu\lambda  \]
+\[ \lambda - \delta\lambda =  1 - \delta \nu  \]
+\[ \lambda (1 - \delta) =  1 - \delta \nu  \]
+\[ \lambda  =  \frac{1 - \delta \nu}{1 - \delta}  \]
+Hence, once we have $\nu$ determined by the FOC as before, we can solve for $\lambda$ using this expression and then
+\[ \mu = \frac{\nu}{\lambda} = \frac{\nu - \delta\nu}{1 - \delta \nu}  \]
+With the backward induction, we just require that in the last period, the seller sets the monopoly price on the remaining buyers, or $P_T$ maximizes
+\[\max_p p (v_{T-1}^a - p^a)  \]
+\[ v_{T-1}^a = (a + 1)P_T^a \]
+\[ v_{T-1} = (a + 1)^{1/a}P_T \]
+\[ P_T = \frac{v_{T-1}}{(a + 1)^{1/a}} \]
+The last period profit is then
+\[ P_T (v_{T-1}^a - P_T^a ) \]
+\[ =\frac{v_{T-1}}{(a + 1)^{1/a}} (v_{T-1}^a - \frac{v_{T-1}^a}{a + 1} ) \]
+\[ =\frac{a v_{T-1}^{a+1}}{(a + 1)^{(a + 1)/a}}  \]
+The remaining degree of freedom is the start of the price sequence:
+\[ \max_{P_0} P_0(1 - v_0^a )+\sum_{i=1}^{T-1}P_i(v_{i-1}^a - v_{i}^a) + \frac{a v_{T-1}^{a+1}}{(a + 1)^{(a + 1)/a}} \]
+\[ \max_{P_0} P_0(1 - \lambda^a P_0^a )+\sum_{i=1}^{T-1}(\mu\lambda)^i P_0((\lambda (\mu\lambda)^{i-1} P_0)^a - (\lambda (\mu\lambda)^i P_0)^a) + \frac{a (\lambda (\mu\lambda)^{T-1} P_0)^{a+1}}{(a + 1)^{(a + 1)/a}} \]
+\[ \max_{P_0} P_0 - \lambda^a P_0^{a+1}+P_0^{a + 1}\sum_{i=1}^{T-1}(\mu\lambda)^i ((\lambda (\mu\lambda)^{i-1} )^a - (\lambda (\mu\lambda)^i )^a) + P_0^{a + 1}\frac{a (\lambda (\mu\lambda)^{T-1} )^{a+1}}{(a + 1)^{(a + 1)/a}} \]
+The FOC is then
+\[ 0 = 1 - (a + 1)P_0^a \left( \lambda^a  - \sum_{i=1}^{T-1}(\mu\lambda)^i ((\lambda (\mu\lambda)^{i-1} )^a - (\lambda (\mu\lambda)^i )^a) - \frac{a (\lambda (\mu\lambda)^{T-1} )^{a+1}}{(a + 1)^{(a + 1)/a}} \right) \]
+We can solve for $P_0$ here, but it is quite messy. If we take $T \to \infty$, the expression cleans up a bit
+\[  1 = (a + 1)P_0^a \left( \lambda^a  - \sum_{i=1}^{\infty}(\mu\lambda)^i ((\lambda (\mu\lambda)^{i-1} )^a - (\lambda (\mu\lambda)^i )^a) \right) \]
+\[  1 = (a + 1)P_0^a\lambda^a \left(  1 - \sum_{i=1}^{\infty}(\mu\lambda)^i (((\mu\lambda)^{i-1} )^a - ((\mu\lambda)^i )^a) \right) \]
+\[  \frac{1}{(1 + a )\lambda^a} = P_0^a \left(  1 - \sum_{i=1}^{\infty}(\mu\lambda)^i ((\mu\lambda)^{a(i-1)}  - (\mu\lambda)^{ai} ) \right) \]
+\[  \frac{1}{(1 + a )^{1/a}\lambda } = P_0 \left(  1 - \sum_{i=1}^{\infty} ((\mu\lambda)^{a(i-1) + i}  - (\mu\lambda)^{ai + i} ) \right)^{1/a} \]
+\[  \frac{1}{(1 + a )^{1/a}\lambda } = P_0 \left(  1 - \frac{1}{(\mu\lambda)^a}\sum_{i=1}^{\infty} (\mu\lambda)^{(1+a)i}  + \sum_{i=1}^{\infty}  (\mu\lambda)^{(a+1)i}  \right)^{1/a} \]
+\[  \frac{1}{(1 + a )^{1/a}\lambda } = P_0 \left(  1 + \left( 1 - \frac{1}{(\mu\lambda)^a}\right)\frac{(\mu\lambda)^{(1+a)}}{1 - (\mu\lambda)^{(1+a)}} \right)^{1/a} \]
+\[  \frac{1}{(1 + a )^{1/a}\lambda } = P_0 \left(  1 + \left(\frac{(\mu\lambda)^a - 1}{(\mu\lambda)^a}\right)\frac{(\mu\lambda)^{(1+a)}}{1 - (\mu\lambda)^{(1+a)}} \right)^{1/a} \]
+\[  \frac{1}{(1 + a )^{1/a}\lambda } = P_0 \left(  1 + \frac{(\mu\lambda)^{a+1} - \mu\lambda}{1 - (\mu\lambda)^{(1+a)}} \right)^{1/a} \]
+\[  \frac{1}{(1 + a )^{1/a}\lambda } = P_0 \left(  \frac{1 - \mu\lambda}{1 - (\mu\lambda)^{(1+a)}} \right)^{1/a} \]
+\[  P_0 =  \frac{1}{\lambda} \left(  \frac{1 - (\mu\lambda)^{(1+a)}} {(1+a)(1 - \mu\lambda)}\right)^{1/a} \]
+Hence, an equilibrium exists, and it is characterized by our equations for $\nu, \mu, \lambda, P_0$ as we have shown above.
+\section*{Problem 6}
+Take the prices as a geometric series, where the ratio is $r(\delta)$. Again, fix $v_t$ as the highest consumer valuation remaining at time $t$ assuming optimal behavior and anticipation of the price sequence. From the buyer indifference between buying sooner versus later, we need
+\[ v_t - p_{t-1} = \delta(v_t - p_t) \]
+\[ v_t - \frac{1}{r}p_t = \delta v_t - \delta p_t \]
+\[ p_t \left( \frac{1}{r} - \delta \right)   =  v_t(1 - \delta) \]
+\[ p_t  =  v_t\frac{1 - \delta}{\frac{1}{r} - \delta } \]
+\[ p_{t+1}  =  v_{t+1}\frac{1 - \delta}{\frac{1}{r} - \delta } \]
+\[ rp_t  =  v_{t+1}\frac{1 - \delta}{\frac{1}{r} - \delta } \]
+\[ rv_t\frac{1 - \delta}{\frac{1}{r} - \delta }  =  v_{t+1}\frac{1 - \delta}{\frac{1}{r} - \delta } \]
+\[ v_{t+1} = rv_t \]
+So the period $t$ profit is
+\[ p_t(v_t - v_{t+1}) = v_t^2 (1-r) \frac{1 - \delta}{\frac{1}{r} - \delta } \]
+For the initial condition, we require
+\[ p_0\frac{\frac{1}{r} - \delta }{1 - \delta} < 1 \]
+The continuation value is then
+\[ v_t^2 (1-r) \frac{1 - \delta}{\frac{1}{r} - \delta } + \delta v_{t+1}^2 (1-r) \frac{1 - \delta}{\frac{1}{r} - \delta } + \delta^2 v_{t+2}^2 (1-r) \frac{1 - \delta}{\frac{1}{r} - \delta } + ...\]
+\[ = v_t^2 (1-r) \frac{1 - \delta}{\frac{1}{r} - \delta } + \delta r^2 v_{t} (1-r) \frac{1 - \delta}{\frac{1}{r} - \delta } + (\delta r^2)^2 v_{t}^2 (1-r) \frac{1 - \delta}{\frac{1}{r} - \delta } + ...\]
+\[ = \frac{v_t^2 (1-r)}{1 - \delta r^2} \frac{1 - \delta}{\frac{1}{r} - \delta } \]
+\[ = \frac{v_t^2 (1-r)}{1 - \delta r^2} \frac{r - \delta r}{1 - \delta r} \]
+\[ = v_t^2  \frac{r (1-r)(1-\delta)}{(1 - \delta r^2)(1-\delta r)} \]
+Taking the limit, we get
+\[ \lim_{\delta \to 1} v_t^2  \frac{r (1-r)(1-\delta)}{(1 - \delta r^2)(1-\delta r)} \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{r (1-r)(1-\delta)}{(1 - \delta r^2)(1-\delta r)} \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{ \frac{\partial}{\partial \delta }r (1-r)(1-\delta)}{\frac{\partial}{\partial \delta }(1 - \delta r^2)(1-\delta r)} \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{ r' (1-r)(1-\delta) - r(r')(1-\delta) - r(1-r)}{(1-\delta r)\frac{\partial}{\partial \delta }(1 - \delta r^2) + (1 - \delta r^2)\frac{\partial}{\partial \delta }(1 - \delta r)} \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{ r' (1-r)(1-\delta) - r(r')(1-\delta) - r(1-r)}{(1-\delta r)(-  r^2 - \delta 2r r') + (1 - \delta r^2)(- r - \delta r')} \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{ r(1-r) - r' (1-r)(1-\delta) + r(r')(1-\delta) }{(1-\delta r)( r^2+ \delta 2r r') + (1 - \delta r^2)(r + \delta r')} \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{ r-r^2 -  r' + rr' + \delta r' - rr' \delta  + rr' - \delta r r' }{(r^2-\delta r^3+2\delta r r'-2 \delta^2 r^2 r') + (r + \delta r' - \delta r^3 - \delta^2 r' r^2 )} \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{ r-r^2 -  r' + 2 rr' + \delta r' - 2 rr' \delta }{ r^2-2 \delta r^3+2\delta r r'- 3 \delta^2 r^2 r' + r + \delta r'  } \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{r'(\delta - 2\delta r+ 2r -1) +  r-r^2   }{ r (1+ r-2 \delta r^2)+r'(2\delta r - 3 \delta^2 r^2 + \delta)   } \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{\frac{\partial}{\partial \delta} r'(\delta + 2 r - 2 \delta r- 1) + r-r^2  }{ \frac{\partial}{\partial \delta}r (1+ r-2 \delta r^2)+r'(2\delta r - 3 \delta^2 r^2 + \delta)   } \]
+\[ = v_t^2 \lim_{\delta \to 1}   \frac{ r''(\delta + 2 r - 2 \delta r- 1)+r'(1 + 2 r' - 2 r - 2\delta r') + r' - 2rr' }{ r' (1+ r-2 \delta r^2) + r(1 + r' - 2r^2 - 4\delta rr')+r''(2\delta r - 3 \delta^2 r^2 + \delta) + r'(2r + 2\delta r' - 6 \delta r^2 - 6 \delta^2 r r' + 1)   } \]
+\[ = v_t^2   \frac{ 1-2r' }{ 1 + r' - 2 - 4r' + r'(2 + 2 r' - 6 - 6 r' + 1)   } \]
+\[ = v_t^2   \frac{ 1-2r' }{ -1  -4 (r')^2 - 6r'     } \]
+\[ = v_t^2   \frac{ 2r' - 1 }{ 1  + 6r' + 4 (r')^2     }  > 0\]
+as long as $r'(\delta) > 1/2$. For example, we can take $r = \delta$, and
+\[ p_0\frac{1 - \delta^2 }{\delta - \delta^2} < 1 \]
+\[ p_0 < \delta\frac{1 - \delta}{1 - \delta^2 } =  \frac{\delta}{1+\delta} \]
+But the continuation value from the notes in class goes to $0$ as $\delta \to 1$. Hence, for some large $\delta$, we have the continuation value of the price sequence described is greater than the case in the notes. Thus, this profile gets the firm strictly positive profits.
+
+\end{document}
+	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
