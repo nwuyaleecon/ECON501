@@ -1,0 +1,84 @@
+%Jennifer Pan, August 2011
+
+\documentclass[10pt,letter]{article}
+	% basic article document class
+	% use percent signs to make comments to yourself -- they will not show up.
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+	% packages that allow mathematical formatting
+
+\usepackage{graphicx}
+\usepackage{tikz}
+	% package that allows you to include graphics
+
+\usepackage{setspace}
+	% package that allows you to change spacing
+
+\onehalfspacing
+	% text become 1.5 spaced
+
+\usepackage{fullpage}
+	% package that specifies normal margins
+
+
+\begin{document}
+	% line of code telling latex that your document is beginning
+
+
+\title{ECON501 Problem Set 4}
+
+\author{Nicholas Wu}
+
+\date{Spring 2021}
+	% Note: when you omit this command, the current dateis automatically included
+
+\maketitle
+	% tells latex to follow your header (e.g., title, author) commands.
+
+\section*{Problem 2}
+By backwards induction, only a Nash equilibrium can be played in the second iteration. The only two pure strategy Nash are $(c, C)$ and $(d, D)$, and $(c,C)$ achieves a higher payoff than $(d, D)$. Consider the following SPNE: play $(b,B)$ in the first stage, and on-path, play $(c,C)$ in the second. Off-path, play $(d,D)$ in the second stage. To show this is an SPNE, we just have to check that this is Nash on each subgame. Clearly, since on-path or off-path, a Nash equilibrium is played on the second stage, these subgames are Nash. Now, it suffices to show there is no profitable deviation in the first stage. The only profitable devaition in the stage game in the first time is to deviate $b \to c$ or $B \to C$. This secures an additional payoff 1, but forces $(d,D)$ in the next period, for total payoff $5$ which is equal to the on-path payoff. Hence, there is no strictly profitable deviation for either player, and hence this is an SPNE.
+
+Without a public randomization device, it is impossible for $(a,A)$ to be played in the 2-stage game. Since a Nash equilibrium must be played in the second stage by backwards induction, and the only pure strategy Nash payoffs are $(1,1)$, $(0,0)$, $(0,10)$, $(10,0)$, there is no way ensure that both deviations from $a \to d$ or $A \to D$ are punished in the second stage game. However, with a public randomization device, or at least 4 iterations of the game, it is possible to incentivize $(a,A)$.
+
+With a public randomization device, we can play the correllated equilibria of
+\[ \frac{1}{2}(a,D) + \frac{1}{2}(d,A) \]
+in the second period, which gives expected payoff 5 to each player; by failing to play $(a,A)$ in the first stage, we can punish by playing the Nash equilibrium $(d,D)$ in the second stage, punishing by 5 and disincentivizing both $a \to d$ and $A \to D$ (since both deviations generate an additional 3), which is less than the loss of the expected 5 in the second stage.
+
+With 4 iterations of the game, we can have the following SPNE: play $(a,A)$ in round 1. In rounds 2-4, if $(a,A)$ was played in round 1, play $(c,C)$. Otherwise, play $(d,D)$. Clearly, in rounds 2-4, in either case, a Nash equilibrium is played, so there is no profitable deviation. The only deviations to consider then are in round 1. If either player deviates to $d$ or $D$, the gain is $10-7 = 3$, but the player then moves to $(d,D)$ rather than $(c,C)$ for the next 3 periods, and hence loses 3 in the subsequent periods. Hence there is no incentive to deviate in round 1.
+\section*{Problem 3}
+By checking the best responses for each pure strategy, we find that there are no pure strategy Nash equilibria. Hence the Nash equilibrium/equilibria must be mixed. Taking the indifference condition, suppose the column player plays $pL + (1-p)R$.
+In order for the row player to mix, we require $2p = 1 - p$ or $p = 1/3$. Similarly, suppose the row player plays $qT + (1-q)B$. In order for the column player to mix, we require $-6q = -3(1-q)$ or $q = 1/3$. Hence, the unique Nash equilibrium requires:
+\[ \left( \frac{1}{3}T + \frac{2}{3}B, \frac{1}{3}L + \frac{2}{3}R  \right) \]
+As for the minimax payoffs, note that if we simply scale the column player's payoffs by $1/3$, the game becomes zero-sum. Since scaling payoffs by a constant does not affect strategic behavior and the minimax payoffs of a zero-sum game are the Nash equilibria, the minimax strategies are just given by the Nash equilibrium we found already and the payoffs are $(2/3, -2)$. Since each player can always secure minimax payoff in the infinitely repeated game; hence, the only equilibrium of the infinitely repeated game is to play the stage-game Nash repeatedly, and there is no difference due to discount factors.
+\section*{Problem 4}
+By inspection, the only Nash equilibrium in pure strategies is $B,R$. In fact, $T$ is dominated by $B$, and after eliminating $T$, $L$ is dominated by $R$. This is also minimax: the row player can always guarantee at least 1 by playing $B$, and the column player can always guarantee at least 1 by playing $R$.
+
+For the grim-trigger strategy on $(T,L)$ to be in equilibrium, we need to show that $\delta$ is high enough the one-shot deviation principle holds. First, we note that $T,L$ already secures the column player his maximal payoff, so the column player has no profitable deviation even in the stage game. So the only deviation we need to consider is the row player. The row player can secure 3 over 2 by deviating in the stage game, but then ensures $(B,R)$ is played for the rest of the game. In order for the deviation to not be profitable,
+\[ 3 + \frac{\delta}{1-\delta} \le \frac{2}{(1-\delta)} \]
+\[ 3 - 3 \delta + \delta \le 2 \]
+\[1 \le 2 \delta  \]
+\[ \delta \ge 1/2 \]
+\section*{Problem 5}
+Yes. Suppose that after $(T,L)$ and $(B,R)$, player 1 plays $T$, and after $(T,R)$ or $(B,L)$, player 1 plays $B$. The best reply to $T$ is $L$, and the best reply to $B$ is $R$. Hence, the player 2's will always play $L$ in case 1 and $R$ in case 2, and there is no other strategy that benefits the player 2's. To show SPNE, we just need to show that player 1 has no profitable one-shot deviation. Suppose $(T,L)$ or $(B,R)$ was just played. Then in order for player 1 to not want to deviate to $(B,L)$, we require the stage-game deviation profit $1$ to not exceed the subsequent punishment of $(B,R)$ the next period instead of $(T,L)$. This implies that
+\[ 3 + 0\delta \le 2 + 2\delta \]
+\[ \delta \ge 1/2 \]
+Similarly, suppose $(T,R)$ or $(B,L)$ was played. In order for the player to not want to deviate to $(T,R)$, the gains from the one-shot deviation must exceed the subseuent punishment of $(B,R)$. That is,
+\[ 1 + 0\delta \le 0 + 2 \delta  \]
+\[ \delta \ge 1/2 \]
+So when $\delta \ge 1/2$, this is an SPNE. On-path, $(T,L)$ is played.
+
+\section*{Problem 6}
+The only non $(0,0,0)$ outcomes are $(1,1,-1)$ and $(1,-1,1)$. The only mixtures of these that guarantee at least payoff 0 to both players 2 and 3 must assign equal probability to $(1,1,-1)$ and $(1,-1,1)$, since if either had greater probability than either player 2 or 3 would have a negative expected payoff. Let that probability be $p/2$. Then the feasible payoffs that exceed minimax are:
+\[ \frac{p}{2}(1,1,-1) + \frac{p}{2}(1,-1,1) + (1-p)(0,0,0) = \{ (p, 0, 0) \mid p \in (0,1] \} \]
+
+We now show we cannot have an SPNE with payoffs better than $(0,0,0)$. Fix $\delta$. For sake of contradiction, suppose that we have an SPNE where some player $i$ gets a nonzero payoff after some history $h^t$. Let such a strategy profile be $\sigma$. Then $v_i(\sigma | h^t) \neq 0$. If $i = 2$ or $i=3$, since every outcome of the stage game has $u_2 = - u_3$, then $v_2(\sigma |h^t) > 0 \implies v_3(\sigma|h^t) < 0$, and $v_3(\sigma |h^t) > 0 \implies v_2(\sigma|h^t) < 0$.
+So we must have either $v_2(\sigma |h^t) < 0$ or $v_3(\sigma |h^t) < 0$. But if 2 and 3 resort to minimax, they can always secure 0, and hence we cannot have either of these statements be true. Thus, we get a contradiction in this case, so $i \neq 2, 3$.
+
+Now, suppose $i = 1$. Then $v_1(\sigma | h^t) \neq 0$. This implies that there exists a history $h^* \supseteq h^t$ such that either $(T,L,W)$ or $(B,R,E)$ is played with nonzero probability after $h^*$. Suppose $(T,L,W)$ is played with nonzero probability after $h^*$. Consider the deviation where player 3 balks at taking the loss, and instead plays $E$ permanently afterwards. Since $(T,L,W)$ was supposed to be played with some probability $p > 0$, playing $E$ ensures at least an increase of $0 - (-p) = p > 0$ in utility in the immediate game, and since the continuation utilities must be $0$ for players 2 and 3 under any history as we showed before, player 3 has a strictly profitable deviation by switching to $E$ and then playing his minimax strategy. Similarly, if $(B,R,E)$ is played with nonzero probability, then player 2 can balk at the loss, and instead play $L$ permanently after. If $(B,R,E)$ was supposed to be played with probability $q$, then player 2 gets strictly positive payoff increase at least $q$ by deviating in the period, and then playing minimax thereafer, since the continuation utility of player 2 under any history must be 0 in SPNE as we showed before.
+Hence, we have a contradiction, so neither $(T,L,W)$ or $(B,R,E)$ can be played with positive probability after any history, and hence we must have $v_1(\sigma) = 0$ for any SPNE strategy profile $\sigma$.
+
+The dimensionality assumption fails; the dimension of the set of feasible payoffs is just 1, but there are 3 players.
+\end{document}
+	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
