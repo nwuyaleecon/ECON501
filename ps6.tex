@@ -1,0 +1,138 @@
+%Jennifer Pan, August 2011
+
+\documentclass[10pt,letter]{article}
+	% basic article document class
+	% use percent signs to make comments to yourself -- they will not show up.
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+	% packages that allow mathematical formatting
+
+\usepackage{graphicx}
+\usepackage{tikz}
+	% package that allows you to include graphics
+
+\usepackage{setspace}
+	% package that allows you to change spacing
+
+\onehalfspacing
+	% text become 1.5 spaced
+
+\usepackage{fullpage}
+	% package that specifies normal margins
+
+
+\begin{document}
+	% line of code telling latex that your document is beginning
+
+
+\title{ECON501 Problem Set 6}
+
+\author{Nicholas Wu}
+
+\date{Spring 2021}
+	% Note: when you omit this command, the current dateis automatically included
+
+\maketitle
+	% tells latex to follow your header (e.g., title, author) commands.
+
+\section*{Problem 2}
+\paragraph*{8.E.1} We write out the normal form of this game. The pure strategies are $AA$, $AN$, $NA$, $NN$, where $A$ means attack and $N$ means not attack, and the first letter denotes the action if the general sees strong type.
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+& AA & AN & NA & NN \\ \hline
+AA & $\frac{M}{4} - \frac{s+w}{2}, \frac{M}{4} - \frac{s+w}{2}$ & $\frac{M}{2} - \frac{s+w}{4}, \frac{M}{4} - \frac{s}{2} $ & $ \frac{3M}{4} - \frac{s+w}{4}, -\frac{w}{2}$ & $M, 0$ \\ \hline
+AN & $ \frac{M}{4} - \frac{s}{2} , \frac{M}{2} - \frac{s+w}{4}$ & $\frac{M}{4} - \frac{s}{4}, \frac{M}{4} - \frac{s}{4}$ & $ \frac{M}{2} - \frac{s}{4}, \frac{M}{4} - \frac{w}{4}$ & $\frac{M}{2}, 0$ \\ \hline
+NA & $ -\frac{w}{2}, \frac{3M}{4} - \frac{s+w}{4}$ & $\frac{M}{4} - \frac{w}{4}, \frac{M}{2} - \frac{s}{4}$ & $ \frac{M}{4} - \frac{w}{4},\frac{M}{4} - \frac{w}{4} $ & $\frac{M}{2}, 0$ \\ \hline
+NN & $0, M$ & $0, \frac{M}{2}$ & $0, \frac{M}{2}$ & $0,0$ \\ \hline
+\end{tabular}
+\end{center}
+We note $NA$ is strictly dominated by $AN$ since $w > s$, so we can restrict our attention to
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+& AA & AN & NN \\ \hline
+AA & $\frac{M}{4} - \frac{s+w}{2}, \frac{M}{4} - \frac{s+w}{2}$ & $\frac{M}{2} - \frac{s+w}{4}, \frac{M}{4} - \frac{s}{2} $ & $M, 0$ \\ \hline
+AN & $ \frac{M}{4} - \frac{s}{2} , \frac{M}{2} - \frac{s+w}{4}$ & $\frac{M}{4} - \frac{s}{4}, \frac{M}{4} - \frac{s}{4}$ & $\frac{M}{2}, 0$ \\ \hline
+NN & $0, M$ & $0, \frac{M}{2}$ & $0,0$ \\ \hline
+\end{tabular}
+\end{center}
+If $M < s$, then $NN, NN$ is the only Nash equilibrium.
+
+Note that the best reply to $NN$ is always $AA$. If $M/2 < s$ then the best reply to $AA$ is $NN$. So if $M/2 < s$, then $(AA, NN)$ and $(NN, AA)$ are Nash equilibria.
+
+If $w > M > s$, then the best reply to $AN$ is $AN$. Hence, if this holds (note this is not mutually exclusive with $M/2 < s$), then $(AN, AN)$ is a Nash equilibrium.
+
+Note that the best reply to $AA$ is never $AA$, so the only potential other Nash equilibria are $(AA, AN)$ and $(AN, AA)$. In order for $AA$ to be a best response to $AN$, we require $M > w$. In order for $AN$ to be the best response to $AA$, we need $M/2 > s$. Hence, for $M>w$ and $M/2 > s$, $(AA,AN)$ and $(AN,AA)$ are Nash equilibria.
+
+\paragraph*{8.E.3}
+
+
+\paragraph*{9.C.2}
+\paragraph*{9.C.3}
+\paragraph*{9.C.4}
+\section*{Problem 3}
+The strategies for the sender are $LL, LR, RL, RR$, denoting the actions after observing $t_1$ and $t_2$. The receiver strategies are $uu, ud, du, dd$, the actions after observing $L$ and $R$. In the subsequent parts, we denote $\mu_L$ the receiver belief in $t_1$ after observing $L$ and $\mu_R$ the receiver belief in $t_1$ after observing $R$.
+\paragraph*{(a)}
+We start with pooling equilibria. Note that in no case after observing $t_2$ will the sender want to play $L$, so the pooling equilibria must have the sender send $R$ always. In this case, the belief of the receiver on $t_1$ versus $t_2$ is just $(0.5, 0.5)$, and hence $u$ is optimal. Hence, $(RR, uu)$ is a PBE, supported by belief $\mu_L \ge 0.5$ and $\mu_R = 0.5$. Additionally, $(RR, du)$  is also a PBE, supported by $\mu_L \le 0.5$ and $\mu_R = 0.5$. (since the beliefs off-path can be arbitrary).
+
+For separating equilibria, we note that the sender always plays $R$ after realization $t_2$. Then after realizing $t_1$, the separating pure equilibria dictates the sender plays $L$. Hence, the only separating PBE strategy for the sender is $LR$. The only consistent beliefs are then $\mu_R = 0$, $\mu_L = 1$, and the resulting strategy for the receiver is $ud$. So the only separating PBE is $(LR, ud)$ with $\mu_R = 0$, $\mu_L = 1$.
+
+\paragraph*{(b)}
+We start with pooling equilibria. If player 1 plays $LL$, then $\mu_L = 1/2$, so player 2 plays $u$ after observing $L$. Off-path, player 2 cannot want to play $d$ after observing $R$, else $t_1$ type would want to deviate to $R$. Hence, a PBE here is $(LL, uu)$, where $\mu_L = 1/2$ and $\mu_R \le 2/3$.
+
+If player 1 plays $RR$, then $\mu_R = 1/2$, so player 2 plays $u$ after observing $R$. But this means the $t_1$ type would rather deviate to $L$, so player 1 cannot play $RR$ in a PBE. Hence the only pooling PBE is the $(LL, uu)$ one we described earlier.
+
+Now, for separating PBE. If player 1 plays $LR$, player 2's beliefs are $\mu_L = 1$, $\mu_R = 0$. So player 2 plays $du$. Note that player 1 does not want to deviate for either type, so this is a PBE: $(LR, du)$ with $\mu_L = 1$, $\mu_R = 0$. Now, if player 1 plays $RL$, player 2's beliefs are $\mu_L= 0$, $\mu_R = 1$, so player 2's best response is $ud$. Once again, we observe that neither type of player 1 would like to deviate. Hence this is also a PBE: $(RL, ud)$ with $\mu_L = 0$, $\mu_R = 1$.
+
+\section*{Problem 4}
+First, we find the Nash equilibria. These are $(L,R)$, $(L, pL + (1-p)R)$ and $(M, L)$, where $0 \le p \le 0.7$.
+
+We find a PBE (no restrictions on beliefs off path) first for the first two equilibria. Since player 1 playing $M,R$, is off path, we can allow player 2's belief over the information set to be what we want. If it is $\alpha M + (1-\alpha) R$ for $\alpha < 1/2$, then $(L,R)$ is supported. If it is $(1/2) M + (1/2))R$, then player 2 can take play $pL + (1-p)R$, $p \in [0, 0.7]$ at his information set, since that is optimal given his belief and player 1 playing $L$ is still optimal.
+
+Finally, for $(M,L)$, we note the belief at player 2's information set is $M$ with certainty. Then, $L$ is supported for player 2 under this belief. Hence, this is also a PBE.
+
+\section*{Problem 5}
+We first look for Nash equilibria where player 1 plays a pure strategy. Suppose player 1 plays $R$ for sure. Then player 3 will always play $L$ for sure. Then player 2 can mix between $L$ and $R$. Let player 2 play $pL + (1-p)R$. In order for player 1 to not want to deviate, $(1-p) \le 1/4$ or $p \ge 3/4$. Hence, $(R, pL + (1-p)R, L)$ is a Nash equilibrium, for $p \ge 3/4$. Now suppose player 1 plays $L$ for sure. Player 2 will always play $R$, since it always gives a strictly higher payout. Player 3 will then also play $R$ since it gives the highest payout. Hence, $(L,R,R)$ is also a Nash equilibrium.
+
+Finally, we look for Nash equilibria where player 1 mixes. Suppose player 1 plays $(1-a)L + aR$. In order to want to mix, we know that player 1 always gets payoff 1 when playing $R$. So player 1 must have expected payoff at least 1 playing $L$. Let player 2 play $R$ with probability $b$, and player 3 play $R$ with probability $c$. The mixture indifference condition for player 1 implies
+\[ 4b(1-c) + bc = 1 \]
+\[ 4b - 3bc = 1 \]
+\[ b(4 - 3c) = 1 \]
+If $b=1$, then we must have $c=1$. If $c=1$, then $b=1$. So if players 2, 3 play $(R,R)$, then player 1 can mix. In order for it to be optimal for 2 to play $R$, the expected value from playing $R$ must exceed the expected value from playing $L$, or
+\[ 1 \ge (1-a) + 4a = 1 + 3a \]
+This requires $a = 0$, but we already counted $(L,R,R)$. Hence, if player 1 mixes, we must have players 2 and 3 also both mix.
+
+Now, we find the Nash equilibrium where all 3 players mix. We already have the indifference condition for player 1 is :
+\[ b(4 - 3c) = 1 \]
+The indifference condition for mixing for player 2 is:
+\[ 1 = 4ac + a(1-c) = 3ac + a = a(3c + 1) \]
+The indifference condition for player 3 is that players 1 and 2 play $(L,R)$ and $(R, L)$ with equal probability, or
+\[ a(1-b) = b(1-a) \]
+\[ a - ab = b - ab \]
+\[ a = b \]
+So we get
+\[ a(4 - 3c) = 1 \]
+\[ a(3c + 1) = 1 \]
+This implies
+\[ 4 - 3c = 3c + 1 \]
+\[ c = 1/2 \]
+\[ a = 2/5 \]
+\[ b = 2/5 \]
+Hence, the other Nash equilibrium is
+\[ \left( \frac{3}{5}L + \frac{2}{5}R,\frac{3}{5}L + \frac{2}{5}R,\frac{1}{2}L + \frac{1}{2}R \right) \]
+
+Now, for PBE, we need to construct beliefs for players 2 and 3 that support the equilibrium. Consider $(R, pL + (1-p)R, L)$, for $p \ge 3/4$. To support this, we have player 2's belief be that player 1 played $R$ for sure, and player 3's belief is that players 1 and 2 played $(R, L)$. Alternatively, for $p = 0$, the equilibrium $(R, R, L)$ is also supported for player 2 believing player 1 played $R$ and player 3 believing players 1 and 2 played some mixture of $L,L$ and $R,L$ (this is fine since player 3's belief is off-path). Similarly, for $(L,R,R)$, we have player 2's belief is that player 1 played $L$ and player 3's belief is that players 1 and 2 played $(L,R)$.
+
+Now, for the mixed-strategy Nash equilibrium, we can make this a PBE by the following beliefs: player 2 must believe with probability $3/5$ that player 1 played $L$, and player 3 has the following belief:
+\[ \frac{3}{7}(L,L) + \frac{2}{7}(L,R) + \frac{2}{7}(R,L) \]
+\section*{Problem 6}
+For pure-strategy Nash equilibria, we note that we have $(R, C, L)$ and $(R, S, R)$. Note that player 1 guarantees maximum payoff by playing 1: the only way player 1 could mix is if players 2 and 3 always play $C, L$. Clearly, if player 3 plays $L$, player 2 is best off playing $C$. Further, in order for player 3 to want to play $L$, we need player 1 playing $R$ with higher probability than $L$. Hence, $(\alpha L + (1-\alpha) R, C, L)$ is Nash for $\alpha \le 1/2$. If player 1 doesn't mix, the only way for player 2 to want to mix is if player 3 also mixes, but player 3 only wants to mix when player 2 plays $S$. Hence, for players 1 and 2 playing $R, S$, player 3 can play $\beta L + (1-\beta)R$ with $\beta \le 1/2$, and this will be a Nash eq.
+Hence $(R, S, \beta L + (1-\beta)R)$ with $\beta \le 1/2$ are the other Nash equilibria.
+
+Now, for PBE, we need beliefs of players 2 and 3 to support the strategies. Let $\mu_2$ be the belief of player 2 in the left side, and $\mu_3$ be the belief of player 3 in the left side. For $(R,C,L)$, this is supported by $\mu_2 = 0, \mu_3 = 0$. We can also support $(R,S,R)$ with $\mu_2 = 0$, $\mu_3 \ge 1/2$ (in order for player 3 to play $R$).
+Further, $(\alpha L + (1-\alpha) R, C, L)$ for $\alpha \le 1/2$ is supported for $\mu_2 = \alpha$, $\mu_3 = \alpha$. Lastly, $(R, S, \beta L + (1-\beta)R)$ with $\beta \le 1/2$ is supported by beliefs $\mu_2 = 0, \mu_3 = 1/2$.
+\end{document}
+	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
