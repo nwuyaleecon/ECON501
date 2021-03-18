@@ -68,11 +68,125 @@ If $w > M > s$, then the best reply to $AN$ is $AN$. Hence, if this holds (note 
 Note that the best reply to $AA$ is never $AA$, so the only potential other Nash equilibria are $(AA, AN)$ and $(AN, AA)$. In order for $AA$ to be a best response to $AN$, we require $M > w$. In order for $AN$ to be the best response to $AA$, we need $M/2 > s$. Hence, for $M>w$ and $M/2 > s$, $(AA,AN)$ and $(AN,AA)$ are Nash equilibria.
 
 \paragraph*{8.E.3}
-
-
+Each firm wants to maximize profits given the type. That is, $q_H, q_L$ must satisfy:
+\[ q_L = \arg \max_q \mu q(a - b(q + q_L) - c_L) + (1-\mu) (q(a - b(q + q_H) - c_L))  \]
+\[ q_H = \arg \max_q \mu q(a - b(q + q_L) - c_H) + (1-\mu) (q(a - b(q + q_H) - c_H))  \]
+The maximization FOCs are:
+\[ \mu (a - b(2q_L) - c_L) - \mu q_L b + (1-\mu) (a - b(q_L + q_H) - c_L) - (1-\mu) q_L b = 0 \]
+\[ \mu (a - b(q_L + q_H) - c_H) - \mu q_H b + (1-\mu) (a - b(2 q_H) - c_H) - (1-\mu) q_H b = 0 \]
+Solving,
+\[ a - bq_L - c_L - \mu b q_L - (1-\mu) b q_H = q_L b \]
+\[ a - bq_H - c_H - \mu b q_L - (1-\mu) b  q_H  = q_H b \]
+\[ \frac{a - c_L}{b} - (2 + \mu)  q_L = (1-\mu)  q_H  \]
+\[ \frac{a - c_H}{b} - (3 - \mu) q_H = \mu  q_L   \]
+\[ \frac{a - c_H}{b} - \frac{3 - \mu}{1-\mu}\left(\frac{a - c_L}{b} - (2 + \mu)  q_L \right) = \mu  q_L   \]
+\[ \frac{a - c_H}{b} - \frac{3 - \mu}{1-\mu}\left(\frac{a - c_L}{b}\right) + \frac{3 - \mu}{1-\mu}(2 + \mu)  q_L  = \mu  q_L   \]
+\[\frac{1}{b}\left( \frac{(a - c_H)(1-\mu)}{1-\mu} - \frac{(a - c_L)(3-\mu)}{1-\mu}\right) =\mu q_L - \frac{3 - \mu}{1-\mu}(2 + \mu)  q_L     \]
+\[\frac{1}{b}\left( (a - c_H)(1-\mu) - (a - c_L)(3-\mu)\right) =\mu(1-\mu) q_L - (3-\mu)(2 + \mu)  q_L     \]
+\[\frac{1}{b}\left( a(1-\mu) - c_H(1-\mu) - a(3-\mu) + c_L(3-\mu)\right) =q_L \left( (\mu-\mu^2)  - (6 + \mu - \mu^2)  \right)    \]
+\[\frac{1}{b}\left( -2a - c_H(1-\mu) + c_L(3-\mu)\right) =q_L (-6)   \]
+\[q_L = \frac{1}{6b}\left( 2a + c_H-\mu c_H - 3 c_L + \mu c_L\right)     \]
+\[q_L = \frac{1}{6b}\left( 2a - 2 c_L + (1-\mu)(c_H - c_L)\right)     \]
+\[q_H = \frac{1}{1-\mu}\left(\frac{a - c_L}{b} - (2 + \mu)  q_L \right)   \]
+\[ q_H = \frac{1}{1-\mu}\left(\frac{a - c_L}{b} - (2 + \mu) \frac{1}{6b}\left( 2a - 2 c_L + (1-\mu)(c_H - c_L)\right) \right) \]
+\[ q_H = \frac{1}{6b(1-\mu)}\left(6a - 6c_L - (2 + \mu)\left( 2a - 2 c_L + (1-\mu)(c_H - c_L)\right) \right) \]
+\[ q_H = \frac{1}{6b(1-\mu)}\left(6a - 6c_L - (2 + \mu)2a + (2 + \mu)2 c_L - (2 + \mu)(1-\mu)(c_H - c_L)\right) \]
+\[ q_H = \frac{1}{6b(1-\mu)}\left(6a - 6c_L - 4a - 2a \mu + 4c_L + 2 \mu c_L - (2 + \mu)(1-\mu)(c_H - c_L)\right) \]
+\[ q_H = \frac{1}{6b(1-\mu)}\left(2a - 2a \mu  - 2c_L + 2 \mu c_L - (2 + \mu)(1-\mu)(c_H - c_L)\right) \]
+\[ q_H = \frac{1}{6b(1-\mu)}\left(2a(1- \mu)  - 2c_L(1-\mu) - (2 + \mu)(1-\mu)(c_H - c_L)\right) \]
+\[ q_H = \frac{1}{6b}\left(2a  - 2c_L - 2(c_H - c_L) - \mu(c_H - c_L)\right) \]
+\[ q_H = \frac{1}{6b}\left(2a  - 2c_H - \mu(c_H - c_L)\right) \]
+So we have:
+\[ q_L = \frac{1}{6b}\left( 2a - 2 c_L + (1-\mu)(c_H - c_L)\right)     \]
+\[ q_H = \frac{1}{6b}\left(2a  - 2c_H - \mu(c_H - c_L)\right) \]
 \paragraph*{9.C.2}
+Note in this case that Out is not dominated by In$_2$. In pure strategies, the only Nash equilibria is (Out, Fight). This is clearly PBE with the respective belief $\mu_1 \ge 2/3$.
+
+Now, we look for mixed equilibria. First, we note if the incumbent plays a pure strategy of Fight, then since $\gamma < 0$ it is never optimal to play anything other than Out. Similarly, if the incumbent plays a pure strategy Accommodate, then the entering firm's best response is In$_1$, implying the only belief is $\mu_1 = 1$, which does not support the pure strategy of accommodate. So any other equilibria must have the incumbent mix between Fight and Accommodate.
+
+Suppose the incumbent mixes between fighting and accommodating; this is only possible if the expected payoff from accommodating is exactly equal to the expected payoff of fighting $(-1)$. Thus, the belief $\mu_1$ that the incumbent is at In$_1$ must be $2/3$, so this is only possible if player 1 plays a strategy mixing over both In$_1$ and In$_2$. Suppose the incumbent fights with probability $p$. The indifference condition is then:
+\[ -p + 3(1-p) = \gamma p + 2(1-p) \ge 0 \]
+\[ (\gamma + 1)p = 1 - p \]
+\[ (\gamma + 2)p = 1 \]
+\[ p = \frac{1}{\gamma + 2} \]
+As an incentive check, we confirm that $p \in (0,1)$ and
+\[ \gamma p + 2(1-p) = \frac{\gamma}{\gamma + 2} + 2\frac{\gamma + 1}{\gamma + 2} = \frac{3\gamma + 2}{\gamma + 2} \ge 0\]
+we note that this requires $\gamma \ge -2/3$.
+
+So, if $\gamma < -2/3$, then the (Out, Fight) equilibrium is the only one we have. If $\gamma > -2/3$, then the expected reward from playing a mixture of In$_1$ and In$_2$ is greater than playing Out, so we get the equilibrium:
+\[ \left(\frac{2}{3} \text{In}_1 + \frac{1}{3}\text{In}_2, \frac{1}{\gamma + 2} \text{Fight} + \frac{\gamma + 1}{\gamma + 2} \text{Accommodate} \right) \]
+supported by $\mu_1 = 2/3$. Finally, if $\gamma = 2/3$, then the entering firm can also mix on Out, and the equilibria are:\[ \left((1-\alpha) \text{Out} + \frac{2}{3}\alpha \text{In}_1 + \frac{1}{3}\alpha \text{In}_2, \frac{1}{\gamma + 2} \text{Fight} + \frac{\gamma + 1}{\gamma + 2} \text{Accommodate} \right) \]
+for $\alpha \in [0,1]$, and belief $\mu_1 = 2/3$.
 \paragraph*{9.C.3}
+\begin{enumerate}[label=(\alph*)]
+\item Consider the second period subgame. By backwards induction, the buyer will accept any offer that is less than $v$. Suppose the seller's prior on the second period subgame is $\mu$ that the player is high type ($v_H$). The seller can offer $v_H - \epsilon$ for expected payoff $\mu (v_H - \epsilon)$, or offer $v_L - \epsilon$ for expected payoff $v_L - \epsilon$. Hence, if $\mu v_H > v_L$, the seller offers $v_H - \epsilon$, and $v_L - \epsilon$ otherwise.
+
+Now, we return to the first period subgame. We first try to find a pooling equilibrium, where both the high type of buyer and low type of buyer will act the same manner. Then if the initial offer is rejected, the seller will have gained no information on the buyer's type and hence the second period belief will be $\mu = \lambda$. Thus, in the second period, the seller will get payoffs $\delta \lambda (v_H - \epsilon)$ or $\delta (v_L - \epsilon)$, whichever is larger. The low type of buyer will receive payoff $\delta\epsilon$ and the high type of buyer will receive payoff $\delta (v_H - v_L + \epsilon)$ if $\lambda v_H \le v_L$, and $\delta \epsilon$ otherwise. Now, in the first period, the low type will want to accept any offer less than $v_L - \delta \epsilon$, since waiting gives no benefit.
+If $\lambda v_H \ge v_L$, then the high type will also receive payoff $\delta \epsilon$ after waiting, so the high type will want to accept any offer less than $v_H - \delta \epsilon > v_L - \delta \epsilon$. Hence we cannot have a pooling equilibrium in this case.
+If $\lambda v_H < v_L$, then $v_H$ receives payoff $\delta (v_H - v_L + \epsilon)$ in the second period, and would accept any offer less than $v_H - \delta (v_H - v_L + \epsilon)$. But the seller has no incentive to make the separating offer, since
+\[ \lambda (v_H - \delta (v_H - v_L + \epsilon)) + (1-\lambda)\delta (v_L - \epsilon) = \lambda (1-\delta) v_H + \delta (v_L + \epsilon) < v_L - \epsilon \]
+Hence here, the seller just offers $v_L-\epsilon$ in the first period, and everyone accepts. This is sustained by the off-path belief $\mu = \lambda$ in the second period.
+
+Now, we look for a separating equilibrium. Note that any offer the low type would accept, the high type would also want to accept. Hence in a separating equilibrium, the low type must reject in the first period where the high type accepts. Hence, the seller's belief at the second period must be $\mu = 0$. Given this, the seller offers $v_L - \epsilon$ in the second period, and pockets $\delta (v_L - \epsilon)$ payoff. Now, the high type's defection from the separating strategy (rejecting in period 1) would net a payoff of $\delta ( v_H - v_L + \epsilon)$ if waiting for the second period, so in order for the offer to be separating, the seller must offer at most $v_H - \delta (v_H - v_L + \epsilon) \approx (1-\delta) v_H + \delta v_L > v_L$. Note then the seller's incentive to make this offer requires that this is better than just offering the low type value,
+\[ \lambda (v_H - \delta (v_H - v_L + \epsilon)) + (1-\lambda)\delta (v_L - \epsilon) \ge v_L - \epsilon    \]
+\[ \lambda (1-\delta)v_H  + \delta (v_L - \epsilon) \ge v_L - \epsilon   \]
+\[ \lambda v_H \ge v_L \]
+Hence, if $\lambda v_H \ge v_L$, then the seller offers just under $(1-\delta)v_H + \delta v_L$ the first period, and the high type accepts, where the low type rejects, after which the seller offers just under $v_L$ and the low type accepts. This is supported by belief $\mu = 0$ in the second period.
+\item Once again, we note that the strategies are monotone in type, that is, the cutoff for accepting an offer is monotone in the type of player. Hence, the belief of the seller in the second round must be uniform on $[\underline{v}, \overline{v}^*]$. Note that in the second round, by backwards induction, the buyer accepts any offer less than the realized type. Hence, the seller maximizes
+\[ \max_v v\frac{\overline{v}^* - v}{\overline{v}^* - \underline{v}} \]
+So the seller offers $\overline{v}^*/2$ or $\underline{v}$, whichever is larger.
+
+Going back to the first period, suppose the seller offers $v$. Suppose the lowest value that accepts the offer is $v' > v$. Then the offered price next period is the larger of $v'/2$ or $\underline{v}$, which we derived earlier. Then we must have indifference of the buyer between waiting and buying in the first round, which is
+\[ v' - v = \delta v'/2 \]
+if $v'/2 > \underline{v}$ and
+\[ v'- v = \delta (v' - \underline{v}) \]
+otherwise. In the first case, we have
+\[ v' = \frac{2}{2-\delta}v \]
+and in the second we get
+\[ v' = \frac{1}{1-\delta}(v - \delta \underline{v}) \]
+Note the first case condition then becomes $v > (2-\delta) \underline{v}$, and we have the second case if $v \le (2-\delta)\underline{v}$. Therefore, the seller's  expected payoff from making offer $v > (2-\delta)\underline{v}$ is
+\[ \frac{\overline{v} - \frac{2}{2-\delta}v}{\overline{v} - \underline{v}}v + \frac{\frac{2}{2-\delta}v - \underline{v}}{\overline{v} - \underline{v}}\delta\frac{\frac{1}{2-\delta}v}{\frac{2}{2-\delta}v - \underline{v}}\left(\frac{1}{2-\delta}v\right) = \frac{1}{\overline{v} - \underline{v}} \left(\left(\overline{v} - \frac{2}{2-\delta}v \right)v + \frac{\delta v^2}{(2-\delta)^2} \right)  \]
+Taking the FOC, we get
+\[ \overline{v} - \frac{4}{2-\delta}v + \frac{2\delta}{(2-\delta)^2}v = 0 \]
+\[ \overline{v}  = \frac{8 - 6 \delta}{(2-\delta)^2}v \]
+\[ v = \frac{(2-\delta)^2 \overline{v} }{8 - 6 \delta} \]
+Checking with the case condition, we get
+\[ \frac{(2-\delta)^2 \overline{v} }{8 - 6 \delta} > (2-\delta)\underline{v}\]
+\[ (2-\delta) \overline{v} > (8 - 6\delta)\underline{v}\]
+\[ \overline{v} >\frac{8 - 6\delta}{2-\delta}\underline{v}\]
+Now, for the second case, we have $v \le (2-\delta) \underline{v}$. In this case, the expected payoff from making offer $v$ is
+\[ \frac{\overline{v} - \frac{1}{1-\delta}(v - \delta \underline{v})}{\overline{v} - \underline{v}}v + \frac{\frac{1}{1-\delta}(v - \delta \underline{v}) - \underline{v}}{\overline{v} - \underline{v}}\delta\underline{v}  \]
+\[ = \frac{1}{\overline{v} - \underline{v}}\left(\left(\overline{v} - \frac{1}{1-\delta}(v - \delta \underline{v}) \right)v + \left(\frac{1}{1-\delta}(v - \delta \underline{v}) - \underline{v} \right) \delta \underline{v}  \right) \]
+\[ = \frac{1}{\overline{v} - \underline{v}}\left(\left(\overline{v} - \frac{1}{1-\delta}(v - \delta \underline{v}) \right)v + \left(\frac{1}{1-\delta}(v - \delta \underline{v}) - \underline{v} \right) \delta \underline{v}  \right) \]
+Taking the FOC, we get
+\[ \overline{v} - \frac{1}{1-\delta}(2v - \delta \underline{v}) + \frac{\delta\underline{v}}{1-\delta} = 0 \]
+\[ \overline{v} + \frac{2\delta\underline{v}}{1-\delta} = \frac{2}{1-\delta}v \]
+\[ v = (1-\delta)\frac{\overline{v}}{2} + \delta\underline{v} \]
+Checking consistency with the case condition, we get
+\[ (1-\delta)\frac{\overline{v}}{2} + \delta\underline{v} \le (2-\delta) \underline{v}\]
+\[ \frac{\overline{v}}{4} \le \underline{v}\]
+\[ \overline{v}\le 4\underline{v}\]
+Note we have a small overlap region, where
+\[ 4 \underline{v} >\overline{v} >\frac{8 - 6\delta}{2-\delta}\underline{v}\]
+After some tedious computation, we see that making the higher offer yields better utility. Hence, we have the following equilibrium.If $\overline{v} >\frac{8 - 6\delta}{2-\delta}\underline{v}$, the seller offers
+\[ \frac{(2-\delta)^2 \overline{v} }{8 - 6 \delta} \]
+in the first period and
+\[ \frac{(2-\delta) \overline{v} }{8 - 6 \delta} \]
+in the second, and buyers with type greater than
+\[ \frac{(2-\delta) \overline{v} }{4 - 3 \delta} \]
+buy in the first period and buyers with type less than the above but greater than
+\[ \frac{(2-\delta) \overline{v} }{8 - 6 \delta} \]
+buy in the second. In the edge case where the optimal solution in the second-stage is non-interior, that is, for $\overline{v} < \frac{8 - 6\delta}{2-\delta}\underline{v}$, then the first stage offer is
+\[ (1-\delta)\frac{\overline{v}}{2} + \delta\underline{v} \]
+and the second stage offer is $\underline{v}$. Buyers with type greater than $\overline{v}/2$ buy in the first period, and anyone not buying the first period buys in the second.
+
+\end{enumerate}
 \paragraph*{9.C.4}
+\begin{enumerate}
+  \item
+  \item
+  \item
+\end{enumerate}
 \section*{Problem 3}
 The strategies for the sender are $LL, LR, RL, RR$, denoting the actions after observing $t_1$ and $t_2$. The receiver strategies are $uu, ud, du, dd$, the actions after observing $L$ and $R$. In the subsequent parts, we denote $\mu_L$ the receiver belief in $t_1$ after observing $L$ and $\mu_R$ the receiver belief in $t_1$ after observing $R$.
 \paragraph*{(a)}
