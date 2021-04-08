@@ -1,0 +1,137 @@
+%Jennifer Pan, August 2011
+
+\documentclass[10pt,letter]{article}
+	% basic article document class
+	% use percent signs to make comments to yourself -- they will not show up.
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+	% packages that allow mathematical formatting
+
+\usepackage{graphicx}
+\usepackage{tikz}
+	% package that allows you to include graphics
+
+\usepackage{setspace}
+	% package that allows you to change spacing
+
+\onehalfspacing
+	% text become 1.5 spaced
+
+\usepackage{fullpage}
+	% package that specifies normal margins
+
+
+\begin{document}
+	% line of code telling latex that your document is beginning
+
+
+\title{ECON501 Problem Set 1}
+
+\author{Nicholas Wu}
+
+\date{Spring 2021}
+	% Note: when you omit this command, the current dateis automatically included
+
+\maketitle
+	% tells latex to follow your header (e.g., title, author) commands.
+
+\section*{Problem 2}
+\begin{enumerate}[label=(\alph*)]
+\item The seller problem is
+\[ \max \sum_i p_i (t(\theta_i) - c(q(\theta_i))) \]
+subject to IC:
+\[ \forall i\neq j \ \ \theta_i v(q(\theta_i)) - t(\theta_i) \ge \theta_i v(q(\theta_j)) - t(\theta_j) \]
+and IR:
+\[ \forall i \ \ \theta_i v(q(\theta_i)) - t(\theta_i) \ge 0 \]
+Now, manipulating IC, we get that for any $i > j$,
+\[ \theta_i v(q(\theta_i)) - t(\theta_i) \ge \theta_i v(q(\theta_j)) - t(\theta_j) \]
+\[ \theta_i (v(q(\theta_i)) - v(q(\theta_j))) \ge t(\theta_i)  - t(\theta_j) \]
+Similarly from IC,
+\[ \theta_j v(q(\theta_i)) - t(\theta_j) \ge \theta_j v(q(\theta_i)) - t(\theta_i) \]
+\[ t(\theta_i) - t(\theta_j) \ge \theta_j (v(q(\theta_i)) -  v(q(\theta_i))) \]
+Putting these two together, we get:
+\[ \theta_i (v(q(\theta_i)) - v(q(\theta_j))) \ge t(\theta_i)  - t(\theta_j) \ge \theta_j (v(q(\theta_i)) -  v(q(\theta_i))) \]
+\[ (\theta_i - \theta_j)(v(q(\theta_i)) - v(q(\theta_j))) \ge 0 \]
+By our supposition, $i > j$, so $\theta_i > \theta_j$, and hence the first term in the product is positive. This implies the second term must also be positive, and hence
+\[ v(q(\theta_i)) - v(q(\theta_j)) \ge 0 \]
+\[ v(q(\theta_i)) \ge v(q(\theta_j)) \]
+Since $v$ is monotonically increasing by assumption, this implies $q(\theta_i) \ge q(\theta_j)$. Hence $q$ is monotonic if IC holds.
+\item
+From IC, for $i > 1$, $\theta_i > \theta_1$, and hence we have
+\[ \theta_i v(q(\theta_i)) - t(\theta_i) \ge \theta_i v(q(\theta_1)) - t(\theta_1) > \theta_1 v(q(\theta_1)) - t(\theta_1)  \]
+But the expression on the right is $> 0$ by IR, hence IR for all $i > 1$ are redundant.
+
+Additionally, we note that from our previous formulation of IC in part $a$, we have for $i \neq j$,
+\[ \theta_i v(q(\theta_i)) - t(\theta_i) \ge \theta_i v(q(\theta_j)) - t(\theta_j) \]
+\[ \theta_i (v(q(\theta_i)) - v(q(\theta_j))) \ge t(\theta_i)  - t(\theta_j) \]
+We claim that IC for consecutive $i,j$ is sufficient. We show this for the case where $i > j$ (the case where $i < j$ is similar, using the opposite directional IC constraint). Then we have from the consecutive IC ($i-j = \pm 1$):
+\[ \theta_i (v(q_i) - v(q_{i-1})) \ge t_i - t_{i-1} \]
+\[ \theta_{i-1} (v(q_{i-1}) - v(q_{i-2})) \ge t_{i-1} - t_{i-2} \]
+\[ \vdots \]
+\[ \theta_{j+1} (v(q_{j+1}) - v(q_{j})) \ge t_{j+1} - t_{j} \]
+Summing, we get
+\[ \sum_{k = j+1}^{i} \theta_k (v(q_k) - v(q_{k-1})) \ge t_i - t_j  \]
+Since the RHS telescopes. But since $i \ge k$, we have $\theta_i \ge \theta_k$, and hence
+\[ \sum_{k = j+1}^{i} \theta_i (v(q_k) - v(q_{k-1})) \ge \sum_{k = j+1}^{i} \theta_k (v(q_k) - v(q_{k-1})) \ge t_i - t_j  \]
+But the LHS telescopes, and we get
+\[ \theta_i (v(q_i) - v(q_j)) \ge t_i - t_j \]
+and hence we have shown IC for $i > j$ from consecutive IC.
+So the only non-redundant constraints are consecutive IC and IR for $1$.
+\item IR1 must bind (otherwise we can increase all transfers by $\epsilon$). Now, consider the constraint IC for $k, k-1$:
+\[ \theta_k v(q_k) - t_k \ge \theta_{k} v(q_{k-1}) - t_{k-1} \]
+Suppose this did not bind. Then consider increasing the transfers $t_k, t_{k+1}, t_{k+2} ... t_n$ by $\epsilon$. Clearly, this doesn't break any of the ICs above $k$ or below $k-1$. Clearly, IC for $k, k-1$ still holds as long as $\epsilon$ is small. Additionally, IC for $k-1, k$ is
+\[ \theta_{k-1} v(q_{k-1}) - t_{k-1} \ge \theta_{k-1} v(q_k) - t_k  \]
+so increasing $t_k$ without changing $t_{k-1}$ maintains this constraint. Hence, we have IC $k, k-1$ must bind. Lastly, since $q$ is monotonic in $\theta$, we have $v(q_{k-1}) - v(q_k) \le 0$, and hence since IC $k, k-1$ binds,
+\[ \theta_{k-1} (v(q_{k-1}) - v(q_k)) \ge \theta_k(v(q_{k-1}) - v(q_k)) = t_{k-1} - t_k \]
+\[ \theta_{k-1} v(q_{k-1}) - t_{k-1} \ge \theta_{k-1} v(q_k) - t_k\]
+so IC $k-1, k$ also holds (but does not necessarily bind).
+\end{enumerate}
+\section*{Problem 3}
+From class, we know that
+\[ q(\theta) = \arg\max v(q) \psi(\theta) - c(q)  = \arg\max v(q) \psi(\theta) - q \]
+We know that in order for this FOC to be valid, we need $\psi(\theta) > 0$, and hence under the regularity assumption, there exists a unique $\theta^*$ such that
+\[ \psi(\theta^*) = 0 \iff \theta^* - \frac{1-F(\theta^*)}{f(\theta^*)} = 0\]
+Since regularity implies $\psi$ is increasing in $\theta$, we have for $\theta \le \theta^*$, $q(\theta) = 0$, and for $\theta > \theta^*$, we have the FOC
+\[ v'(q) \psi(\theta) = 1 \]
+\[ v'(q(\theta)) = 1/\psi(\theta) \]
+Also, we know that
+\[ t(\theta)= \theta v(q(\theta)) - \int_{0}^\theta v(q(x)) \ dx \]
+\[ t'(\theta) = v(q(\theta)) + \theta v'(q(\theta))q'(\theta) - v(q(\theta)) = v'(q(\theta))q'(\theta) = \frac{\theta }{\psi(\theta)}q'(\theta) \]
+Hence
+\[ t(\theta) = t(0) + \int_0^{\theta} \frac{x}{\psi(x)}q'(x) \ dx \]
+Since $t(0) = 0 v(q(0)) = 0$,
+\[ t(\theta) = \int_0^{\theta} \frac{x}{\psi(x)}q'(x) \ dx \]
+Integrating the RHS by parts,
+\[ t(\theta) = \frac{x}{\psi(x)}q(x) \Bigr|_0^\theta - \int_0^\theta \frac{\psi(x) - x \psi'(x)}{\psi(x)^2 }q(x) \ dx \]
+\[ t(\theta) = \frac{\theta}{\psi(\theta)}q(\theta) - \int_0^\theta \frac{\psi(x) - x \psi'(x)}{\psi(x)^2 }q(x) \ dx \]
+Since $q(0) = 0$. Dividing by $q(\theta)$, we get
+\[ \frac{t(\theta)}{q(\theta)} = \frac{\theta}{\psi(\theta)} - \frac{1}{q(\theta)}\int_0^\theta \frac{\psi(x) - x \psi'(x)}{\psi(x)^2 }q(x) \ dx \]
+Taking the derivative wrt $\theta$, we get
+\[ \frac{\partial}{\partial \theta}\frac{t(\theta)}{q(\theta)} = \frac{\psi(\theta) - \theta \psi'(\theta)}{(\psi(\theta))^2} + \frac{q'(\theta)}{q(\theta)^2}\int_0^\theta \frac{\psi(x) - x\psi'(x)}{\psi(x)^2 }q(x) \ dx - \frac{\psi(\theta) - \theta \psi'(\theta)}{\psi(\theta)^2 } \]
+\[ = -\frac{q'(\theta)}{q(\theta)^2}\int_0^\theta \frac{\psi(x) - x\psi'(x)}{\psi(x)^2 }q(x) \ dx \]
+Now, we know $q' > 0$, $q^2 > 0$, $\psi^2 > 0$. Then $\psi(\theta) \ge \theta \psi'(\theta) $ is a sufficient condition for this expression to be negative (equivalently, $\theta / \psi(\theta)$ is increasing).
+\section*{Problem 4}
+\begin{enumerate}[label=(\alph*)]
+\item
+\item
+\end{enumerate}
+\section*{Problem 5}
+\begin{enumerate}[label=(\alph*)]
+\item Suppose agent $i$ realizes type $\theta_i$. By truthful reporting, the expected payout is given by the probability of winning the good times the expected payout given the good was won:
+\[ \theta_i \left(\theta_i - 2 * (\theta_i/2)\right) = \theta_i (0) = 0 \]
+However, by reporting some $\theta_i - \epsilon$, the expected payout is then
+\[ (\theta_i - \epsilon) \left(\theta_i  - 2 * ((\theta_i - \epsilon)/2)\right) = (\theta_i - \epsilon) (\epsilon) > 0 \]
+Hence truthful reporting cannot be an equilibrium, since both players gain strictly higher expected payoff by underreporting.
+\item
+\end{enumerate}
+\section*{Problem 6}
+\begin{enumerate}[label=(\alph*)]
+\item
+\item
+\end{enumerate}
+\section*{Problem 7}
+\section*{Problem 8}
+\end{document}
+	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
