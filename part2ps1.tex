@@ -175,7 +175,11 @@ This is almost the case of first best, but has $\psi(\theta)$ instead of $\theta
 However, by reporting some $\theta_i - \epsilon$, the expected payout is then
 \[ (\theta_i - \epsilon) \left(\theta_i  - 2 * ((\theta_i - \epsilon)/2)\right) = (\theta_i - \epsilon) (\epsilon) > 0 \]
 Hence truthful reporting cannot be an equilibrium, since both players gain strictly higher expected payoff by underreporting.
-\item Fix the player 2 report as $b_2$. Player 1 only wants the good iff $\theta_1 \ge 2b_2$, or $\theta_1/2 \ge b_2$. Hence, it is optimal to bid $\theta_1/2$. Symmetrically, it is optimal for player 2 to bid $\theta_2/2$. Hence, each player bids half of his/her own true value. Note it is ex-post efficient, since the player with the highest type gets the good. The truthful-reporting direct mechanism that implements this same ex-post allocation is then just the standard second-price auction.
+\item Fix the player 2 report as $b_2$. Player 1 only wants the good iff $\theta_1 \ge 2b_2$, or $\theta_1/2 \ge b_2$. Hence, it is optimal to bid $\theta_1/2$. Symmetrically, it is optimal for player 2 to bid $\theta_2/2$. Hence, each player bids half of his/her own true value. Note it is ex-post efficient, since the player with the highest type gets the good. The direct mechanism then has the alloction rule:
+\[ \bar{q}_i(\theta) = \int_0^{2\theta} 1 \ dt = 2\theta  \]
+with transfers
+\[ \bar{t}_i(\theta) = \theta \bar{q}_i(\theta) - \int_0^\theta \bar{q}_i(t) \ dt \]
+\[ = 2\theta^2 - \theta^2 = \theta^2 \]
 \end{enumerate}
 \section*{Problem 6}
 \begin{enumerate}[label=(\alph*)]
@@ -186,6 +190,17 @@ The virtual type of 2 is
 Note that $\psi_1(\theta_1) \ge 0$ always, and $\psi_2(\theta) > 0$ for $\theta_2 > 1.5$. Hence we want to give to player 2 if $\psi_2 > \psi_1$, else give to player 1. This condition is also rewriteable as:
 \[ 2\theta_2 - 3 > 2\theta_1 - 2 \]
 \[ \theta_2 > \theta_1 + \frac{1}{2}\]
+The direct mechanism is then
+\[ \bar{q}_1(\theta) = \frac{\theta - 1/2}{2} = \max\left(\frac{2\theta - 1}{4}, 0\right) \]
+\[ \bar{q}_2(\theta) = \theta - 1/2 - 1 = \min\left(\theta - \frac{3}{2}, 1\right) \]
+\[ \bar{t}_1(\theta) = \theta  \bar{q}_1(\theta) - \int_1^\theta \bar{q}_1(t) \ dt \]
+\[  = \theta  \frac{2\theta - 1}{4} - \int_1^\theta \frac{2t - 1}{4} \ dt  \]
+\[ =  \frac{2\theta^2 - \theta}{4} - \frac{\theta^2 - \theta}{4}  \]
+\[ =  \frac{\theta^2}{4}   \]
+\[ \bar{t}_2(\theta) = \theta \bar{q}_2(\theta) - \int_1^\theta \bar{q}_2(t) \ dt  \]
+\[ = \theta (\theta - 3/2) - \int_{3/2}^\theta t - 3/2 \ dt \]
+\[ = \theta^2 - 3\theta / 2 - (\theta^2 / 2 - 3\theta/2 - (9/8 - 9/4)) \]
+\[ = \theta^2/ 2  - 9/8 \]
 \item We present a BNE such that the auction implements the same allocation rule. Consider the strategy for player 1, with $b_2$ fixed. Player 1 wants the good iff $\theta_1 > b_2 - \frac{1}{2}$, or $\theta_1+ (1/2) \ge b_2$. Hence, it is optimal to bid $\theta_1 + 1/2$. Now, for player 2, fixing $b_1$, player 2 wants the good iff $\theta_2 \ge b_1$, and hence it is optimal to bid $\theta_2$. So player 1 bids $\theta_1 + 1/2$, and player 2 bids $\theta_2$, and player 2 gets the good iff $\theta_2 > \theta_1 + (1/2)$, exactly the revenue maximizing result we derived in the previous part.
 \end{enumerate}
 \section*{Problem 7}
