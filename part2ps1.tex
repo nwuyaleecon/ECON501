@@ -176,10 +176,10 @@ However, by reporting some $\theta_i - \epsilon$, the expected payout is then
 \[ (\theta_i - \epsilon) \left(\theta_i  - 2 * ((\theta_i - \epsilon)/2)\right) = (\theta_i - \epsilon) (\epsilon) > 0 \]
 Hence truthful reporting cannot be an equilibrium, since both players gain strictly higher expected payoff by underreporting.
 \item Fix the player 2 report as $b_2$. Player 1 only wants the good iff $\theta_1 \ge 2b_2$, or $\theta_1/2 \ge b_2$. Hence, it is optimal to bid $\theta_1/2$. Symmetrically, it is optimal for player 2 to bid $\theta_2/2$. Hence, each player bids half of his/her own true value. Note it is ex-post efficient, since the player with the highest type gets the good. The direct mechanism then has the alloction rule:
-\[ \bar{q}_i(\theta) = \int_0^{2\theta} 1 \ dt = 2\theta  \]
+\[ \bar{q}_i(\theta) = \int_0^{2\theta} 1 \ dt = \min(2\theta,1)  \]
 with transfers
 \[ \bar{t}_i(\theta) = \theta \bar{q}_i(\theta) - \int_0^\theta \bar{q}_i(t) \ dt \]
-\[ = 2\theta^2 - \theta^2 = \theta^2 \]
+\[ = 2\theta^2 - \theta^2 = \min(\theta^2,1/4) \]
 \end{enumerate}
 \section*{Problem 6}
 \begin{enumerate}[label=(\alph*)]
