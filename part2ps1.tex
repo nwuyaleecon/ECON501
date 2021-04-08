@@ -93,7 +93,7 @@ From class, we know that
 \[ q(\theta) = \arg\max v(q) \psi(\theta) - c(q)  = \arg\max v(q) \psi(\theta) - q \]
 We know that in order for this FOC to be valid, we need $\psi(\theta) > 0$, and hence under the regularity assumption, there exists a unique $\theta^*$ such that
 \[ \psi(\theta^*) = 0 \iff \theta^* - \frac{1-F(\theta^*)}{f(\theta^*)} = 0\]
-Since regularity implies $\psi$ is increasing in $\theta$, we have for $\theta \le \theta^*$, $q(\theta) = 0$, and for $\theta > \theta^*$, we have the FOC
+Since regularity implies $\psi$ is increasing in $\theta$, we have if $\theta \le \theta^*$, $q(\theta) = 0$, and othehrwise for $\theta > \theta^*$, we have the FOC
 \[ v'(q) \psi(\theta) = 1 \]
 \[ v'(q(\theta)) = 1/\psi(\theta) \]
 Also, we know that
@@ -114,8 +114,59 @@ Taking the derivative wrt $\theta$, we get
 Now, we know $q' > 0$, $q^2 > 0$, $\psi^2 > 0$. Then $\psi(\theta) \le \theta \psi'(\theta) $ is a sufficient condition for this expression to be negative, since this makes the integrand negative at all values (equivalently, we can require $\theta / \psi(\theta)$ is decreasing).
 \section*{Problem 4}
 \begin{enumerate}[label=(\alph*)]
-\item
-\item
+\item The regulator maximizes:
+\[ \int_0^q p(x) \ dx - p(q) q + \alpha \Pi(q) - s\]
+subject to
+\[ p(q)q - C(q,\theta) + s \ge 0 \]
+Note that given a $q$, we want to pick $s$ as small as possible to make the condition bind. Hence
+\[ s = C(q,\theta)- p(q) q  \]
+so $\Pi(q) = 0$. So the unconstrained maximization is given by
+\[ \max_q \int_0^q p(x) \ dx - p(q) q -C(q,\theta) + p(q) q = \max_q \int_0^q p(x) \ dx - C(q, \theta) \]
+The interior FOC of the relaxed problem is
+\[ p(q) - \theta = 0 \]
+\[ 1 - 2q = \theta \]
+\[ q = \frac{1-\theta}{2} \]
+\item The monopoly participation constraint is:
+\[ p(q(\theta)) q(\theta) - K - \theta q(\theta) + s(\theta) \ge 0 \]
+The IC constraints are then
+\[ p(q(\theta)) q(\theta) - K - \theta q(\theta) + s(\theta) \ge p(q(\theta')) q(\theta') - K - \theta q(\theta') + s(\theta') \]
+Note for $\theta < \overline{\theta}$ we get:
+\[ p(q(\overline{\theta}))q(\overline{\theta}) - K - \overline{\theta} q(\overline{\theta}) \le p(q(\overline{\theta}))q(\overline{\theta}) - K - \theta q(\overline{\theta})  \le p(q(\theta))q({\theta}) - K - \theta q({\theta})   \]
+Hence IR is redundant except for $\overline{\theta}$. Note that this IR must bind, else we can uniformly lower the subsidies by the same amount. So $U(\overline{\theta}) = 0$. IC can be rewritten
+\[ U(\theta) = \max_{\theta'} p(q(\theta')) q(\theta') - K - \theta q(\theta') + s(\theta')  \]
+By the envelope theorem, $U'(\theta) = -q(\theta)$. So \[ U(\theta) = \int_{\theta}^{\overline{\theta}} q(x) \ dx \]
+Then we can determine subsidies:
+\[ U(\theta) = \int_{\theta}^{\overline{\theta}} q(x) \ dx = p(q(\theta)) q(\theta) - K - \theta q(\theta) + s(\theta)  \]
+\[ s(\theta) = \int_{\theta}^{\overline{\theta}} q(x) \ dx - p(q(\theta)) q(\theta) + K + \theta q(\theta) =  \int_{\theta}^{\overline{\theta}} q(x) \ dx - p(q(\theta)) q(\theta) + C(q, \theta) \]
+Then the maximization problem becomes:
+\[ \max \int_{\underline{\theta}}^{\overline{\theta}} \left(V(q(\theta)) + \alpha \Pi(q(\theta)) - s(\theta)\right)f(\theta) \ d\theta \]
+\[ = \max \int_{\underline{\theta}}^{\overline{\theta}} \left(\int_0^{q(\theta)}p(x) \ dx - p(q(\theta))q(\theta) + \alpha \left(\int_{\theta}^{\overline{\theta}} q(x) \ dx \right) - \left(\int_{\theta}^{\overline{\theta}} q(x) \ dx- p(q(\theta)) q(\theta) + K + \theta q(\theta) \right)\right)f(\theta) \ d\theta \]
+\[ = \max_q \int_{\underline{\theta}}^{\overline{\theta}} \left(\int_0^{q(\theta)}p(x) \ dx -(1- \alpha) \left(\int_{\theta}^{\overline{\theta}} q(x) \ dx \right) - K - \theta q(\theta)\right)f(\theta) \ d\theta \]
+\[ = \max_q \int_{\underline{\theta}}^{\overline{\theta}} \left(\int_0^{q(\theta)}p(x) \ dx - K - \theta q(\theta)\right)f(\theta) \ d\theta -(1- \alpha) \int_{\underline{\theta}}^{\overline{\theta}}\left(\int_{\theta}^{\overline{\theta}} q(x) \ dx \right) f(\theta) d \theta \]
+\[ = \max_q \int_{\underline{\theta}}^{\overline{\theta}} \left(\int_0^{q(\theta)}p(x) \ dx - K - \theta q(\theta)\right)f(\theta) \ d\theta -(1- \alpha) \int_{\underline{\theta}}^{\overline{\theta}}\int_{\theta}^{\overline{\theta}} q(x) f(\theta) \ dx  \ d \theta \]
+\[ = \max_q \int_{\underline{\theta}}^{\overline{\theta}} \left(\int_0^{q(\theta)}p(x) \ dx - K - \theta q(\theta)\right)f(\theta) \ d\theta - (1- \alpha) \int_{\underline{\theta}}^{\overline{\theta}} \int_{\underline{\theta}}^{x} q(x) f(\theta) \ d \theta \ dx    \]
+\[ = \max_q \int_{\underline{\theta}}^{\overline{\theta}} \left(\int_0^{q(\theta)}p(x) \ dx - K - \theta q(\theta)\right)f(\theta) \ d\theta - (1- \alpha) \int_{\underline{\theta}}^{\overline{\theta}} q(x) F(x) \ dx    \]
+\[ = \max_q \int_{\underline{\theta}}^{\overline{\theta}} \left(\int_0^{q(\theta)}p(x) \ dx - K - \theta q(\theta)\right)f(\theta) \ d\theta - (1- \alpha) \int_{\underline{\theta}}^{\overline{\theta}} q(x) \frac{F(x)}{f(x)} f(x0) \ dx    \]
+\[ = \max_q \int_{\underline{\theta}}^{\overline{\theta}} \left(\int_0^{q(\theta)}p(x) \ dx - K - \theta q(\theta) - (1-\alpha)\frac{F(\theta)}{f(\theta)}q(\theta) \right)f(\theta) \ d\theta    \]
+\[ = \max_q \int_{\underline{\theta}}^{\overline{\theta}} \left(\int_0^{q(\theta)}p(x) \ dx - K - \psi(\theta) q(\theta)  \right)f(\theta) \ d\theta    \]
+where
+\[ \psi(\theta) = \theta + (1-\alpha) \frac{F(\theta)}{f(\theta)} \]
+Since $\theta + F(\theta)/f(\theta)$ is increasing, we have
+\[ 1 + \frac{\partial}{\partial \theta} \frac{F(\theta)}{f(\theta)} > 0 \]
+\[ \frac{\partial}{\partial \theta} \frac{F(\theta)}{f(\theta)} > -1 \]
+\[ (1-\alpha)\frac{\partial}{\partial \theta} \frac{F(\theta)}{f(\theta)} > -(1-\alpha) \]
+\[ 1 + (1-\alpha)\frac{\partial}{\partial \theta} \frac{F(\theta)}{f(\theta)} > \alpha > 0 \]
+Hence $\theta + (1-\alpha)F(\theta)/f(\theta)$ is also increasing. Now, we just have to maximize:
+\[\int_0^{q(\theta)}p(x) \ dx - K - \psi(\theta) q(\theta)  \]
+at each $\theta$. The FOC gives
+\[ p(q(\theta)) - \psi(\theta) = 0 \]
+\[ 1 - 2q(\theta) - \psi(\theta) = 0 \]
+\[ q(\theta) = \frac{1-\psi(\theta)}{2}\]
+This interior solution is only valid as long as the integrand is positive, or
+\[ \int_0^{q(\theta)}p(x) \ dx - K - \psi(\theta) q(\theta) \ge 0 \]
+\[ K \le \int_0^{q(\theta)}p(x) \ dx - \psi(\theta) q(\theta) = q(\theta) - q(\theta)^2 - \psi(\theta)q(\theta) = \frac{(1-\psi(\theta))^2}{4} \]
+But by assumption, $K \le \frac{(1-\underline{\theta})^2}{4} = \frac{(1-\psi(\underline{\theta}))^2}{4}$. Since $\psi$ is increasing, there exists some $\theta^*$ such that $K = (1-\psi(\theta^*))^2/4$. For $\theta \ge \theta^*$, the regulator sets $q = 0$, and for $\theta < \theta^*$, the regulator sets $q = (1-\psi(\theta))/2$.
+This is almost the case of first best, but has $\psi(\theta)$ instead of $\theta$; that is, the regulator is forced to decrease quantity in order to properly incentivize truthful reporting of $\theta$ by the monopoly.
 \end{enumerate}
 \section*{Problem 5}
 \begin{enumerate}[label=(\alph*)]
@@ -124,14 +175,62 @@ Now, we know $q' > 0$, $q^2 > 0$, $\psi^2 > 0$. Then $\psi(\theta) \le \theta \p
 However, by reporting some $\theta_i - \epsilon$, the expected payout is then
 \[ (\theta_i - \epsilon) \left(\theta_i  - 2 * ((\theta_i - \epsilon)/2)\right) = (\theta_i - \epsilon) (\epsilon) > 0 \]
 Hence truthful reporting cannot be an equilibrium, since both players gain strictly higher expected payoff by underreporting.
-\item
+\item Fix the player 2 report as $b_2$. Player 1 only wants the good iff $\theta_1 \ge 2b_2$, or $\theta_1/2 \ge b_2$. Hence, it is optimal to bid $\theta_1/2$. Symmetrically, it is optimal for player 2 to bid $\theta_2/2$. Hence, each player bids half of his/her own true value. Note it is ex-post efficient, since the player with the highest type gets the good. The truthful-reporting direct mechanism that implements this same ex-post allocation is then just the standard second-price auction.
 \end{enumerate}
 \section*{Problem 6}
 \begin{enumerate}[label=(\alph*)]
-\item
-\item
+\item In the direct mechanism, each player reports his/her type. We need to specify the allocation rule that induces maximal revenue. We sell to the agent with the highest virtual type. The virtual type of player 1 is given by:
+\[ \psi_1(\theta_1) = \theta_1 - \frac{1 - (\theta_1 - 1)}{1} = 2\theta_1 - 2 \]
+The virtual type of 2 is
+\[ \psi_2(\theta_2) = \theta_2 - \frac{1 - (1/2)(\theta_2 - 1)}{1/2} = 2\theta_2 - 3 \]
+Note that $\psi_1(\theta_1) \ge 0$ always, and $\psi_2(\theta) > 0$ for $\theta_2 > 1.5$. Hence we want to give to player 2 if $\psi_2 > \psi_1$, else give to player 1. This condition is also rewriteable as:
+\[ 2\theta_2 - 3 > 2\theta_1 - 2 \]
+\[ \theta_2 > \theta_1 + \frac{1}{2}\]
+\item We present a BNE such that the auction implements the same allocation rule. Consider the strategy for player 1, with $b_2$ fixed. Player 1 wants the good iff $\theta_1 > b_2 - \frac{1}{2}$, or $\theta_1+ (1/2) \ge b_2$. Hence, it is optimal to bid $\theta_1 + 1/2$. Now, for player 2, fixing $b_1$, player 2 wants the good iff $\theta_2 \ge b_1$, and hence it is optimal to bid $\theta_2$. So player 1 bids $\theta_1 + 1/2$, and player 2 bids $\theta_2$, and player 2 gets the good iff $\theta_2 > \theta_1 + (1/2)$, exactly the revenue maximizing result we derived in the previous part.
 \end{enumerate}
 \section*{Problem 7}
+Let $G(x)$ denote the CDF of the the highest bid of $N-1$ players. That is,
+\[ G(x) = (F(x))^{N-1} \]
+We denote the pdf assicated with $G$ as $g$. Then we know by the revenue equivalence theorem, the interim expected payoff is
+\[ \int_{\underline{v}}^{v_i} G(x) \ dx = G(v_i) v_i + (1-G(v_i))(- b(v_i))  \]
+Solving for $b(v_i)$, we get
+\[ (1-G(v_i)) b(v_i) = G(v_i) v_i - \int_{\underline{v}}^{v_i} G(x) \ dx    \]
+\[  b(v_i) = \frac{G(v_i)}{1-G(v_i)} v_i -\frac{1}{1-G(v_i)} \int_{\underline{v}}^{v_i} G(x) \ dx    \]
+Integrating by parts, we get
+\[  b(v_i) = \frac{G(v_i)}{1-G(v_i)} v_i -\frac{1}{1-G(v_i)} \int_{\underline{v}}^{v_i} G(x) \ dx    \]
+\[ = \frac{G(v_i)}{1-G(v_i)} v_i - \frac{1}{1-G(v_i)}  \left( v_i G(v_i) - \int_{\underline{v}}^{v_i} x g(x) \ dx  \right)  \]
+\[ =  \int_{\underline{v}}^{v_i} x g(x) \ dx   \]
+Hence players bidding according to this function gives a symmetric equilibrium.
 \section*{Problem 8}
+Once again, let $G(x)$ denote the CDF of the highest bid of $N-1$ players as in the previous problem, and let the pdf associated with $G$ be $g$. By revenue equivalence, the interim expected payoff of player with value $v_i$ is
+\[ \int_{0}^{v_i} G(x) = G(v_i) \left( v_i - E(\alpha s(v_i) + (1-\alpha) s(\max v_{-i}) | v_i = \max v)\right)  \]
+\[ \int_{0}^{v_i} G(x) = G(v_i) \left( v_i - \alpha s(v_i)  - (1-\alpha) E( s(\max v_{-i}) | v_i = \max v)\right)  \]
+\[ \int_{0}^{v_i} G(x) = (v_i - \alpha s(v_i))G(v_i) - (1-\alpha) \int_0^{v_i}  s(x) g(x) \ dx \]
+Differentiating both sides wrt $v_i$, we get
+\[ G(v_i) = (v_i - \alpha s(v_i))g(v_i) + (1 - \alpha s'(v_i))G(v_i)  - (1-\alpha)s(v_i) g(v_i)  \]
+\[ G(v_i) = v_i g(v_i) - \alpha s(v_i) g(v_i) + G(v_i) - \alpha G(v_i) s'(v_i) - (1-\alpha) s(v_i) g(v_i)  \]
+\[ 0 = v_i g(v_i)  - \alpha G(v_i) s'(v_i) -  s(v_i) g(v_i)  \]
+\[ \alpha G(v_i) s'(v_i) + s(v_i) g(v_i)  = v_i g(v_i)    \]
+\[  s'(v_i) + s(v_i) \frac{g(v_i)}{\alpha G(v_i)}  = v_i \frac{g(v_i)}{\alpha G(v_i)}    \]
+Let \[ \varphi(x) = e^{\int_{0}^x \frac{g(t)}{\alpha G(t)} \ dt}  \]
+Then \[ \varphi'(x) = \frac{g(t)}{\alpha G(t)} \varphi(x) \]
+Then
+\[  s'(v_i)\varphi(v_i) + s(v_i) \frac{g(v_i)}{\alpha G(v_i)} \varphi(v_i) = v_i \frac{g(v_i)}{\alpha G(v_i)} \varphi(v_i)   \]
+\[  s'(v_i)\varphi(v_i) + s(v_i) \varphi' (v_i) = v_i \varphi'(v_i)   \]
+\[ \frac{\partial}{\partial v_i} s(v_i)\varphi(v_i) = v_i \varphi'(v_i) \]
+Integrating, we get
+\[ s(v_i)\varphi(v_i) = 0(\varphi'(0)) + \int_{0}^{v_i} x \varphi'(x) \ dx  \]
+\[ s(v_i)\varphi(v_i) = \int_{0}^{v_i} x \varphi'(x) \ dx  \]
+\[ s(v_i)\varphi(v_i) = x \varphi(x) \Bigr|_0^{v_i} - \int_{0}^{v_i} \varphi(x) \ dx  \]
+\[ s(v_i)\varphi(v_i) = v_i \varphi(v_i)  - \int_{0}^{v_i} \varphi(x) \ dx  \]
+\[ s(v_i) = v_i  - \frac{1}{\varphi(v_i)}\int_{0}^{v_i} \varphi(x) \ dx  \]
+where we integrated by parts. Now, we notice that we can rewrite $\varphi:$
+\[ \varphi(x) = e^{\int_{0}^x \frac{g(t)}{\alpha G(t)} \ dt} = e^{\frac{1}{\alpha} (\log G(x) - \log G(0))} = e^{\log(G(x))/\alpha} = G(x)^{1/\alpha} = F(x)^{(N-1)/\alpha}  \]
+So we can plug in
+\[ s(v_i) = v_i  - \frac{1}{F(v_i)^{(N-1)/\alpha}}\int_{0}^{v_i} F(x)^{(N-1)/\alpha} \ dx  \]
+
+
+
+
 \end{document}
 	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
