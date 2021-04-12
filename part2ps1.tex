@@ -175,11 +175,11 @@ This is almost the case of first best, but has $\psi(\theta)$ instead of $\theta
 However, by reporting some $\theta_i - \epsilon$, the expected payout is then
 \[ (\theta_i - \epsilon) \left(\theta_i  - 2 * ((\theta_i - \epsilon)/2)\right) = (\theta_i - \epsilon) (\epsilon) > 0 \]
 Hence truthful reporting cannot be an equilibrium, since both players gain strictly higher expected payoff by underreporting.
-\item Fix the player 2 report as $b_2$. Player 1 only wants the good iff $\theta_1 \ge 2b_2$, or $\theta_1/2 \ge b_2$. Hence, it is optimal to bid $\theta_1/2$. Symmetrically, it is optimal for player 2 to bid $\theta_2/2$. Hence, each player bids half of his/her own true value. Note it is ex-post efficient, since the player with the highest type gets the good. The direct mechanism then has the alloction rule:
-\[ \bar{q}_i(\theta) = \int_0^{2\theta} 1 \ dt = \min(2\theta,1)  \]
+\item Fix the player 2 report as $b_2$. Player 1 only wants the good iff $\theta_1 \ge 2b_2$, or $\theta_1/2 \ge b_2$. Hence, it is optimal to bid $\theta_1/2$. Symmetrically, it is optimal for player 2 to bid $\theta_2/2$. Hence, each player bids half of his/her own true value. Note it is ex-post efficient, since the player with the highest type gets the good. The truthful-reporting direct mechanism then has the alloction rule:
+\[ \bar{q}_i(\theta) = \int_0^{\theta} 1 \ dt = \theta  \]
 with transfers
 \[ \bar{t}_i(\theta) = \theta \bar{q}_i(\theta) - \int_0^\theta \bar{q}_i(t) \ dt \]
-\[ = 2\theta^2 - \theta^2 = \min(\theta^2,1/4) \]
+\[ = \theta^2 - \theta^2/2 = \theta^2/2 \]
 \end{enumerate}
 \section*{Problem 6}
 \begin{enumerate}[label=(\alph*)]
@@ -200,7 +200,7 @@ The direct mechanism is then
 \[ \bar{t}_2(\theta) = \theta \bar{q}_2(\theta) - \int_1^\theta \bar{q}_2(t) \ dt  \]
 \[ = \theta (\theta - 3/2) - \int_{3/2}^\theta t - 3/2 \ dt \]
 \[ = \theta^2 - 3\theta / 2 - (\theta^2 / 2 - 3\theta/2 - (9/8 - 9/4)) \]
-\[ = \theta^2/ 2  - 9/8 \]
+\[ = \max(\min(\theta^2/ 2  - 9/8, 2), 0) \]
 \item We present a BNE such that the auction implements the same allocation rule. Consider the strategy for player 1, with $b_2$ fixed. Player 1 wants the good iff $\theta_1 > b_2 - \frac{1}{2}$, or $\theta_1+ (1/2) \ge b_2$. Hence, it is optimal to bid $\theta_1 + 1/2$. Now, for player 2, fixing $b_1$, player 2 wants the good iff $\theta_2 \ge b_1$, and hence it is optimal to bid $\theta_2$. So player 1 bids $\theta_1 + 1/2$, and player 2 bids $\theta_2$, and player 2 gets the good iff $\theta_2 > \theta_1 + (1/2)$, exactly the revenue maximizing result we derived in the previous part.
 \end{enumerate}
 \section*{Problem 7}
@@ -214,7 +214,7 @@ Solving for $b(v_i)$, we get
 Integrating by parts, we get
 \[  b(v_i) = \frac{G(v_i)}{1-G(v_i)} v_i -\frac{1}{1-G(v_i)} \int_{\underline{v}}^{v_i} G(x) \ dx    \]
 \[ = \frac{G(v_i)}{1-G(v_i)} v_i - \frac{1}{1-G(v_i)}  \left( v_i G(v_i) - \int_{\underline{v}}^{v_i} x g(x) \ dx  \right)  \]
-\[ =  \int_{\underline{v}}^{v_i} x g(x) \ dx   \]
+\[ =   \frac{1}{1-G(v_i)}\int_{\underline{v}}^{v_i} x g(x) \ dx   \]
 Hence players bidding according to this function gives a symmetric equilibrium.
 \section*{Problem 8}
 Once again, let $G(x)$ denote the CDF of the highest bid of $N-1$ players as in the previous problem, and let the pdf associated with $G$ be $g$. By revenue equivalence, the interim expected payoff of player with value $v_i$ is
