@@ -1,0 +1,136 @@
+%Jennifer Pan, August 2011
+
+\documentclass[10pt,letter]{article}
+	% basic article document class
+	% use percent signs to make comments to yourself -- they will not show up.
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+	% packages that allow mathematical formatting
+
+\usepackage{graphicx}
+\usepackage{tikz}
+	% package that allows you to include graphics
+
+\usepackage{setspace}
+	% package that allows you to change spacing
+
+\onehalfspacing
+	% text become 1.5 spaced
+
+\usepackage{fullpage}
+	% package that specifies normal margins
+
+
+\begin{document}
+	% line of code telling latex that your document is beginning
+
+
+\title{ECON501 Problem Set 1}
+
+\author{Nicholas Wu}
+
+\date{Spring 2021}
+	% Note: when you omit this command, the current dateis automatically included
+
+\maketitle
+	% tells latex to follow your header (e.g., title, author) commands.
+
+\section*{Problem 2}
+\begin{enumerate}[label=(\alph*)]
+  \item In the expected externality setting, the transfers are given by
+  \[ t_B = E_{\theta_S'}[\theta_{S}' k(\theta_B, \theta_S')] + E_{\theta_B'}[\theta_{B}' k(\theta_B', \theta_S)] \]
+  \[ t_S = -E_{\theta_S'}[\theta_{S}' k(\theta_B, \theta_S')] - E_{\theta_B'}[\theta_{B}' k(\theta_B', \theta_S)] \]
+  For the uniform distribution, this is
+  \[ t_B(\theta_B, \theta_S) = \int_{0}^{\theta_B }t \ dt + \int_{\theta_S}^1 t \ dt = \frac{\theta_B^2}{2} + \frac{1}{2} - \frac{\theta_S^2}{2} = \frac{1 + \theta_B^2 - \theta_S^2}{2} \]
+  \[ t_S = -t_B = -\frac{1 + \theta_B^2 - \theta_S^2}{2} \]
+  \item For the buyer, the interim expected utility of reporting $T$ is
+  \[ \theta_B P(\theta_S < T) - \frac{1 + T^2 - E[\theta_S^2]}{2} = \theta_B T - \frac{1}{2}T^2 - \frac{1 - 1/3}{2}  \]
+  \[ = \theta_B T - \frac{1}{2}T^2 - \frac{1}{3} \]
+  The FOC is $\theta_B - T = 0$, so this is maximized for $T = \theta_B $.
+
+  For the seller, the interim expected utility of reporting $T$ is
+  \[ \theta_S P(\theta_B < T) +  \frac{1 + E[\theta_B^2] - T^2}{2} \]
+  \[ = \theta_S T - \frac{1}{2}T^2 +  \frac{1}{3} \]
+  Again, this is maximized for $T = \theta_S$. Hence truthtelling is optimal for both buyer and seller, so IC is satisfied.
+\end{enumerate}
+\section*{Problem 3}
+We show a direct mechaanism that satisfies all except each of the following properties:
+\begin{enumerate}[label=(\roman*)]
+  \item Without efficiency: we can just take the do-nothing mechanism, where all transfers are 0, the good is never exchanged, and nothing happens. Clearly this is IC, since no actions anyone does changes anything, and it is IR, since each agents gets exactly their outside option. This is also budget balanced, since all transfers are 0.
+  \item Without budget balance: We can take the Groves mechanism for this. If $\theta_B > \theta_S$, then the transfers are:
+  \[ t_B = \theta_S \]
+  \[ t_S = - \theta_B \]
+  if $\theta_S \ge \theta_B$, there is no exchange and no transfers, which is efficient. Note that this is clearly IC, since no agent can do better for themselves by falsely reporting their type, and this is IR, since in the event of exchange, each agent gets $\theta_B - \theta_S > 0$, which is better than the outside option. Note this is not budget balanced; the sum of transfers is $\theta_S - \theta_B < 0$.
+  \item Without IC: If $\theta_B > \theta_S$, take
+  \[ t_B = \theta_S \]
+  \[ t_S = - \theta_S \]
+  And take the transfers and no exchange if $\theta_B \le \theta_S$.
+  Clearly this is budget balanced, since the transfers sum to 0. This is also IR: the surplus of the buyer in event of exchange is $\theta_B - \theta_S$, and the seller is guaranteed $\theta_S$. However, this is not IC: the seller has incentive to report higher than $\theta_S$.
+  \item Without IR: again, the good is allocated if $\theta_B > \theta_S$. Let $k(\theta_B, \theta_S) = 1$ if $\theta_B > \theta_S$ and $0$ otherwise. $k$ is the efficient allocation rule (trade iff $\theta_B > \theta_S$). We take the expected externality mechanism. In the event of exchange, the transfers are then
+  \[ t_B = E_{\theta_S'}[\theta_{S}' k(\theta_B, \theta_S')] + E_{\theta_B'}[\theta_{B}' k(\theta_B', \theta_S)] \]
+  \[ t_S = -E_{\theta_S'}[\theta_{S}' k(\theta_B, \theta_S')] - E_{\theta_B'}[\theta_{B}' k(\theta_B', \theta_S)] \]
+  Clearly this is budget balanced; the transfers by definition sum to 0. We know this is IC from the lecture, since the expected externality mechanism is IC. To check this is not IR, we note that the ex ante expected utility for the buyer is
+  \[ E_{\theta}[\theta_B k(\theta_B, \theta_S) - t_B] =  E_{\theta}[\theta_B k(\theta_B, \theta_S)] - E_{\theta}[t_b] \]
+\[ = E_{\theta}[\theta_B k(\theta_B, \theta_S)] - E_{\theta}[\theta_{S} k(\theta_B, \theta_S)]- E_{\theta}[\theta_{B} k(\theta_B, \theta_S)]\]
+\[ = - E_{\theta}[\theta_{S} k(\theta_B, \theta_S)] < 0\]
+Since the ex ante expected utility is less than the outside option, this cannot be individually rational for each $\theta_B$.
+
+\end{enumerate}
+\section*{Problem 4}
+\begin{enumerate}[label=(\alph*)]
+  \item By efficiency, $k(\theta_B, \theta_S) = 1$ iff $\theta_B > \theta_S$. So $\bar{k}_B(\theta_B) = \theta_B$, and $\bar{k}_S(\theta_S) = 1-\theta_S$. By IC, we have
+  \[ U_B(\theta_B) = U_B(0) + \int_0^{\theta_B} \bar{k}_B(t) \ dt = U_B(0) + \int_0^{\theta_B} t \ dt = U_B(0) + \frac{\theta_B^2}{2} \]
+  \[ U_S(\theta_B) = U_S(1) + \int_{\theta_S}^{1} \bar{k}_S(t) \ dt = U_S(1) + \int_{\theta_S}^1 1-t \ dt = U_S(1) + \frac{1 -2\theta_S + \theta_S^2}{2} = U_S(1) + \frac{(1-\theta_S)^2}{2}  \]
+  From IR, $U_S(1) \ge 0$ and $U_B(0) \ge 0$, so we get
+  \[ U_B(\theta_B) \ge \frac{\theta_B^2}{2}  \]
+  \[ U_S(\theta_S) \ge \frac{(1-\theta_S)^2}{2} \]
+  Hence
+  \[ E[U_B(\theta_B) + U_S(\theta_S)] \ge \int_0^1 \frac{\theta_B^2}{2} \ d\theta_B + \int_0^1 \frac{(1-\theta_S)^2}{2} \ d\theta_S = \frac{1}{6} + \frac{1}{6} =\frac{1}{3} \]
+  \item Alternatively, the total utility can be written
+  \[ E[\theta_B k(\theta_B, \theta_S) - t_B - \theta_S k(\theta_B, \theta_S) - t_S] \]
+  By budget balance, $t_B + t_S = 0$, so
+  \[ =E[\theta_B k(\theta_B, \theta_S)  - \theta_S k(\theta_B, \theta_S) ] \]
+  \[ =E[(\theta_B-\theta_S) k(\theta_B, \theta_S)] \]
+  \[ = \int_0^1 \int_0^1 (\theta_B - \theta_S)k(\theta_B, \theta_S)  \ d\theta_B \ d\theta_S\]
+  \[ = \int_0^1 \int_{\theta_S}^1 (\theta_B - \theta_S)  \ d\theta_B \ d\theta_S\]
+  \[ = \int_0^1  \left(\frac{1}{2} - \frac{\theta_S^2}{2} - \theta_S(1-\theta_S)\right)  \ d\theta_S\]
+  \[ = \int_0^1  \left(\frac{1}{2} + \frac{\theta_S^2}{2} - \theta_S \right)  \ d\theta_S\]
+  \[ = \frac{1}{2} + \frac{1}{6} - \frac{1}{2} = \frac{1}{6} \]
+  and we are done.
+\end{enumerate}
+\section*{Problem 5}
+\begin{enumerate}[label=(\alph*)]
+  \item We take the bidding function as strictly increasing $b$. Then, in symmetric equilibrium, the expected value of bidding $b_i$ is given by
+  \[ (\theta_i - b_i)P(b_i > b_j) + E(b_j|b_i < b_j) P(b_i < b_j) \]
+  \[ = (\theta_i - b_i)b^{-1}(b_i) + \int_{b^{-1}(b_i)}^1 b(t) \ dt \]
+  The FOC gives
+  \[ -b^{-1}(b_i) + (\theta_i - b_i)(b^{-1})'(b_i) - b(b^{-1}(b_i)) (b^{-1})'(b_i) = 0 \]
+  \[ (\theta_i - 2b_i)(b^{-1})'(b_i)  = b^{-1}(b_i)  \]
+  \[ (\theta_i - 2b(\theta_i))(b^{-1})'(b(\theta_i))  = b^{-1}(b(\theta_i))  \]
+  \[ (\theta_i - 2b(\theta_i))(b^{-1})'(b(\theta_i))  = \theta_i  \]
+  \[ \frac{\theta_i - 2b(\theta_i)}{b'(\theta_i)}  = \theta_i  \]
+  \[ \theta_i - 2b = \theta_i b'  \]
+  \[ \theta_i^2 b' + 2\theta_i b = \theta_i^2 \]
+  \[ \frac{\partial}{\partial \theta_i} \theta_i^2 b = \theta_i^2 \]
+  \[ \theta_i^2 b = \frac{\theta_i^3}{3} \]
+  \[ b = \frac{\theta_i}{3} \]
+  So everyone bids $1/3$ their value.
+
+  \item This is efficient; since the bid is a linear increasing function of $\theta_i$, the person with the highest value will get the firm. The interim expected utility of type $\theta_i$ is given by
+  \[ (\theta_i - (1/3)\theta_i)\theta_i + (1/3)(\theta_i + (1-\theta_i)/2)(1-\theta_i) = \frac{1}{6} + \frac{1}{2}\theta_i^2 \]
+  \[ \ge \frac{1}{6} + \frac{1}{2}(\theta_i - 1/4) \]
+  \[ = \frac{1}{2}\theta_i + \frac{1}{24} > \frac{\theta_i}{2}\]
+  where we used the fact that $x^2 \ge x - 1/4$ (since $(x - 1/2)^2 > 0$). Hence the interim expected utility is always larger than the outside option, so this is IR.
+  \item The pivot mechanism has each agent pay the externality induced by the other agent. WLOG, suppose $\theta_1 > \theta_2$ (relabel if opposite). Then the pivot mechanism has
+  \[ q_1 = 1 \]
+  \[ q_2 = 0 \]
+  \[ t_1 = \theta_2(1 - 1/2) = \frac{\theta_2}/{2} \]
+  \[ t_2 = \theta_1(0 - 1/2) = -\frac{\theta_1}{2} \]
+  since the outside option value of $q$ is $1/2$ for each (i.e. both agents start with half of the firm).
+\end{enumerate}
+
+
+\end{document}
+	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
