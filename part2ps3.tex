@@ -1,0 +1,186 @@
+%Jennifer Pan, August 2011
+
+\documentclass[10pt,letter]{article}
+	% basic article document class
+	% use percent signs to make comments to yourself -- they will not show up.
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+	% packages that allow mathematical formatting
+
+\usepackage{graphicx}
+\usepackage{tikz}
+	% package that allows you to include graphics
+
+\usepackage{setspace}
+	% package that allows you to change spacing
+
+\onehalfspacing
+	% text become 1.5 spaced
+
+\usepackage{fullpage}
+	% package that specifies normal margins
+
+
+\begin{document}
+	% line of code telling latex that your document is beginning
+
+
+\title{ECON501 Problem Set 3}
+
+\author{Nicholas Wu}
+
+\date{Spring 2021}
+	% Note: when you omit this command, the current dateis automatically included
+
+\maketitle
+	% tells latex to follow your header (e.g., title, author) commands.
+
+\section*{Problem 2}
+The provision of the public good is efficient iff $\theta_1 + \theta_2 > 0$. That is, \[ k(\theta_1, \theta_2) = 1[\theta_1 + \theta_2 > 0]\]
+where we use $1[]$ to denote a $\{ 0,1\}$ indicator variable that is $1$ iff the bracketed expression is true. Hence,
+\[ \bar{k}_i(\theta_i) = Pr_{-i}(\theta_i + \theta_{-i} > 0) =Pr_{-i}( \theta_{-i} > -\theta_i )= \frac{1-(-\theta_i)}{2}= \frac{1 + \theta_i}{2} \]
+By IC and the envelope theorem, the interim expected utility is
+\[ U_i(\theta_i) = U(-1) + \int_{-1}^{\theta_i} \frac{1 + t}{2} \ dt  \]
+\[ U_i(\theta_i) = U(-1) + \frac{(\theta_i + 1)^2}{4}   \]
+By IR, we need $U(-1) \ge 0$. Hence
+\[ U_i(\theta_i) = U(-1) + \frac{(\theta_i + 1)^2}{4} \ge \frac{(\theta_i + 1)^2}{4} \]
+\[ E[U_i(\theta_i)] \ge E\left[\left(\frac{\theta_i + 1}{2}\right)^2 \right] = \int_{-1}^1 \frac{1}{2} \left(\frac{t + 1}{2}\right)^2 \ dt\]
+\[ = \frac{1}{3} \]
+So
+\[ E[U_1(\theta_1) + U_2(\theta_2)] \ge \frac{1}{3} + \frac{1}{3} = \frac{2}{3} \]
+However,
+\[ E[U_1(\theta_1) + U_2(\theta_2)] = E[\theta_1 k(\theta_1,\theta_2)  + t_1(\theta_1, \theta_2) + \theta_2 k(\theta_1,\theta_2) + t_2(\theta_1, \theta_2)]  \]
+By budget balance, $t_1(\theta_1, \theta_2)+t_2(\theta_1, \theta_2) = 0$, so
+\[ E[U_1(\theta_1) + U_2(\theta_2)] = E[(\theta_1 + \theta_2)k(\theta_1,\theta_2) ] = E[\max(\theta_1 + \theta_2, 0)] \]
+\[ = \int_{-1}^1 \left(\int_{-\theta_1}^1 (\theta_1 + \theta_2)\frac{1}{2} \ d\theta_2 \right) \frac{1}{2} d\theta_1 \]
+\[ = \int_{-1}^1 \left( \frac{(\theta_1 + 1)^2}{4} \right)  \frac{1}{2}d\theta_1 \]
+\[ = \int_{-1}^1 \frac{(\theta_1 + 1)^2}{8} d\theta_1 = 1/3 < 2/3 \]
+Hence it is impossible to satisfy budget balance, IC, IR, and efficiency.
+
+\section*{Problem 3}
+Throughout the problem, we denote $k_i = \partial k/\partial \theta_i$.
+
+If: Suppose $k$ is nondecreasing and
+\[ t_i(\theta_i, \theta_{-i}) = t_i(\underline{\theta}_i, \theta_{-i}) - \int_{\underline{\theta}_i}^{\theta_i}\frac{\partial v(k(s,\theta_{-i}),s)}{\partial k} \frac{\partial k(s, \theta_{-i})}{\partial s} ds \]
+We have to show this is truthfully implementable in dominant strategies. Fix $\theta_{-i}$. It suffices to show $\theta_i \in \arg\max_t u(f(t, \theta_{-i}), \theta_i)$. With some algebra, we have
+\[ u(f(t, \theta_{-i}), \theta_i) = v(k(t, \theta_{-i}), \theta_i) + t_i(t, \theta_{-i})\]
+\[ = v(k(t, \theta_{-i}), \theta_i) + t_i(\underline{\theta}_i, \theta_{-i}) - \int_{\underline{\theta}_i}^{t}\frac{\partial v(k(s,\theta_{-i}),s)}{\partial k} \frac{\partial k(s, \theta_{-i})}{\partial s} ds \]
+Since $v$ is twice continuously differentiable, and $k$ is nondecreasing, the second order conditions are satisfied so we have the FOC:
+\[ \frac{\partial}{\partial t}u(f(t, \theta_{-i}), \theta_i) = 0 \]
+\[ \frac{\partial}{\partial t}v(k(t, \theta_{-i}), \theta_i) - \frac{\partial}{\partial t}\int_{\underline{\theta}_i}^{t}\frac{\partial v(k(s,\theta_{-i}),s)}{\partial k} \frac{\partial k(s, \theta_{-i})}{\partial s} ds = 0 \]
+\[ \left(\frac{\partial v(k(t, \theta_{-i}), \theta_i)}{\partial k}  - \frac{\partial v(k(t,\theta_{-i}),t)}{\partial k}\right) \frac{\partial k(t, \theta_{-i})}{\partial t} = 0  \]
+Then we note that for $t = \theta_i$, this is
+\[ \left(\frac{\partial v(k(\theta_i, \theta_{-i}), \theta_i)}{\partial k}  - \frac{\partial v(k(\theta_i,\theta_{-i}),\theta_i)}{\partial k}\right) k_i(\theta_i, \theta_{-i}) = (0)k_i(\theta_i, \theta_{-i}) = 0  \]
+Hence the FOC is satisfied, so $\theta_i \in \arg\max_t u(f(t, \theta_{-i}), \theta_i)$. Therefore $f$ is truthfully implementable in dominant strategies.
+
+Only if: Suppose $f$ is truthfully implementable in dominant strategies. Then $\theta_i \in \arg\max_t u(f(t, \theta_{-i}), \theta_i)$. Suppose, for sake of contradiction, that $k$ is not nondecreasing in $\theta_i$. That is, for some $\theta_i < \theta'_i$, fixed $\theta_{-i}$, $ k(\theta_i, \theta_{-i}) > k(\theta'_i, \theta_{-i}) $. Since $v$ is supermodular by the assumption $\partial^2 v / \partial k \partial \theta > 0$, we have
+\[ v(k(\theta_i, \theta_{-i}), \theta'_i) + v(k(\theta'_i, \theta_{-i}), \theta_i) > v(k(\theta'_i, \theta_{-i}), \theta'_i) + v(k(\theta_i, \theta_{-i}), \theta_i) \]
+\[ v(k(\theta_i, \theta_{-i}), \theta'_i) - v(k(\theta'_i, \theta_{-i}), \theta'_i) >  v(k(\theta_i, \theta_{-i}), \theta_i) - v(k(\theta'_i, \theta_{-i}), \theta_i) \]
+\[ v(k(\theta_i, \theta_{-i}), \theta'_i) + t(\theta_i, \theta_{-i}) - v(k(\theta'_i, \theta_{-i}), \theta'_i) - t(\theta'_i, \theta_{-i})>  v(k(\theta_i, \theta_{-i}), \theta_i)+ t(\theta_i, \theta_{-i}) - v(k(\theta'_i, \theta_{-i}), \theta_i)- t(\theta'_i, \theta_{-i}) \]
+\[ u(f(\theta_i, \theta_{-i}), \theta'_i)- u(f(\theta'_i, \theta_{-i}), \theta'_i) >  u(f(\theta_i, \theta_{-i}), \theta_i)- u(f(\theta'_i, \theta_{-i}), \theta_i) \]
+But since $f$ is truthfully implementable, $\theta_i \in \arg\max_t u(f(t, \theta_{-i}), \theta_i)$, which implies that
+\[  u(f(\theta'_i, \theta_{-i}), \theta'_i) \ge u(f(\theta_i, \theta_{-i}), \theta'_i) \]
+\[  u(f(\theta_i, \theta_{-i}), \theta_i) \ge u(f(\theta'_i, \theta_{-i}), \theta_i) \]
+or equivalently
+\[  0 \ge  u(f(\theta_i, \theta_{-i}), \theta'_i) - u(f(\theta'_i, \theta_{-i}), \theta'_i)  \]
+\[  u(f(\theta_i, \theta_{-i}), \theta_i) - u(f(\theta'_i, \theta_{-i}), \theta_i) \ge 0 \]
+which imply $u(f(\theta_i, \theta_{-i}), \theta_i) - u(f(\theta'_i, \theta_{-i}), \theta_i) \ge (f(\theta_i, \theta_{-i}), \theta'_i) - u(f(\theta'_i, \theta_{-i}), \theta'_i)$. But this directly contradicts the expression we derived earlier, that
+\[ u(f(\theta_i, \theta_{-i}), \theta'_i)- u(f(\theta'_i, \theta_{-i}), \theta'_i) >  u(f(\theta_i, \theta_{-i}), \theta_i)- u(f(\theta'_i, \theta_{-i}), \theta_i) \]
+Hence, $k$ must be nondecreasing in $\theta_i$.
+
+Now, in order for $\theta_i \in \arg\max_t u(f(t, \theta_{-i}), \theta_i)$, we have the FOC:
+\[ \frac{\partial}{\partial t}u(f(t, \theta_{-i}), \theta_i) \Bigr|_{\theta_i} = 0 \]
+\[ \left( \frac{\partial}{\partial t}v(k(t, \theta_{-i}), \theta_i) + \frac{\partial}{\partial t} t_i(t, \theta_{-i}) \right)\Bigr|_{\theta_i} = 0 \]
+\[  \frac{\partial v(k(\theta_i, \theta_{-i}), \theta_i)}{\partial k} k_i(\theta_i, -\theta_i) + \frac{\partial}{\partial t} t_i(t, \theta_{-i}) \Bigr|_{\theta_i} = 0 \]
+\[  \frac{\partial}{\partial t} t_i(t, \theta_{-i}) \Bigr|_{\theta_i} = -\frac{\partial v(k(\theta_i, \theta_{-i}), \theta_i)}{\partial k} k_i(\theta_i, -\theta_i) \]
+Then by the fundamental theorem of calculus, we have
+\[ t_i(\theta_i, \theta_{-i}) - t_i(\underline{\theta}_i, \theta_{-i})   =  \int_{\underline{\theta}_i}^{\theta_i}-\frac{\partial v(k(t, \theta_{-i}), t)}{\partial k} k_i(t, -\theta_i) \ dt \]
+\[ t_i(\theta_i, \theta_{-i}) = t_i(\underline{\theta}_i, \theta_{-i})   -  \int_{\underline{\theta}_i}^{\theta_i}\frac{\partial v(k(t, \theta_{-i}), t)}{\partial k} k_i(t, -\theta_i) \ dt \]
+as desired.
+
+\section*{Problem 4}
+We restrict our attention to VCG mechanisms as in the TA suggestion. Let the total number of individuals be $N$.
+\begin{enumerate}[label=(\alph*)]
+  \item If: Suppose $V^*(\theta) = \sum_i V_i(\theta_{-i})$. Consider the VCG mechanism where
+  \[ h_i(\theta_{-i}) = -(N-1)V_i(\theta_{-i}) \]
+  Then
+  \[ t_i(\theta) = -\sum_{j \neq i} v_j(k^*(\theta), \theta_j) + (N-1)V_i(\theta_{-i}) \]
+  so
+  \[ \sum_i t_i(\theta) = \sum_i\left( -\sum_{j \neq i} v_j(k^*(\theta), \theta_j) \right)+ \sum_i (N-1)V_i(\theta_{-i}) \]
+  \[ = \sum_i\left(v_i(k^*(\theta), \theta_i) - \sum_{j} v_j(k^*(\theta), \theta_j)\right) + (N-1)V^*(\theta)  \]
+  \[ = \sum_i\left(v_i(k^*(\theta), \theta_i) - V^*(\theta)\right) + (N-1)V^*(\theta)\]
+  \[ = V^*(\theta) - N V^*(\theta) + (N-1)V^*(\theta)\]
+  \[ = 0 \]
+  Hence this is budget balanced. $k^*$ is efficient, this VCG mechanism is ex-post efficient. So the VCG mechanism allocation rule is a social choice function that is ex-post efficient, and truthfully implementable (since any VCG mechanism allocation rule is truthfully implementable).
+
+  Only if: Since we can restrict our attention to VCG mechanisms, suppose the VCG mechanism given by some $\{ h_i \}$ is ex-post efficient, and budget balanced. Because of budget balance,
+  \[ 0 = \sum_i t_i(\theta) = \sum_i\left( -\sum_{j \neq i} v_j(k^*(\theta), \theta_j) + h_i(\theta_{-i})\right) \]
+  \[ 0 = \sum_i\left( -\sum_{j \neq i} v_j(k^*(\theta), \theta_j)\right) + \sum_i h_i(\theta_{-i}) \]
+  \[ 0 = \sum_i\left( v_i(k^*(\theta), \theta_i)-\sum_{j} v_j(k^*(\theta), \theta_j)\right) + \sum_i h_i(\theta_{-i}) \]
+  \[ 0 = \sum_i\left( v_i(k^*(\theta), \theta_i)-V^*(\theta)\right) + \sum_i h_i(\theta_{-i}) \]
+  \[ 0 = V^*(\theta)- NV^*(\theta)+ \sum_i h_i(\theta_{-i}) \]
+  \[ (N-1)V^*(\theta)= \sum_i h_i(\theta_{-i}) \]
+  \[ V^*(\theta)= \sum_i \frac{1}{N-1}h_i(\theta_{-i}) \]
+  Hence, we can take $V_i(\theta_{-i}) = \frac{1}{N-1}h_i(\theta_{-i})$.
+  \item We will show this for general $N$, not just $N = 3$. $k^*$ satisfies, by assumption,
+  \[ k^*(\theta) \in \arg\max_k \sum_{i=1}^N \theta_i k - \frac{1}{2}k^2 \]
+  \[ k^*(\theta) \in \arg\max_k \left(\sum_{i=1}^N \theta_i\right) k - \frac{N}{2}k^2 \]
+  By the FOC,
+  \[ \left(\sum_{i=1}^N \theta_i\right) - N k^*(\theta) = 0 \]
+  \[ k^*(\theta) = \frac{1}{N}\left(\sum_{i=1}^N \theta_i\right) \]
+  We must show that $V^*(\theta) = \sum_i V_i(\theta_{-i})$ for some $V_i$.
+  \[ V^*(\theta) = \sum_i \left(\theta_i k^*(\theta) - \frac{1}{2}(k^*(\theta))^2\right) \]
+  \[ V^*(\theta) = \left(\sum_i \theta_i\right) k^*(\theta) - \frac{N}{2}(k^*(\theta))^2 \]
+  \[ V^*(\theta) = \left(\sum_i \theta_i\right) \frac{1}{N}\left(\sum_{i} \theta_i\right) - \frac{N}{2}\left(\frac{1}{N}\left(\sum_{i} \theta_i\right)\right)^2 \]
+  \[ V^*(\theta) = \frac{1}{N}\left(\sum_{i} \theta_i\right)^2 - \frac{1}{2N}\left(\sum_{i} \theta_i\right)^2 \]
+  \[ V^*(\theta) = \frac{1}{2N}\left(\sum_{i} \theta_i\right)^2  \]
+  \[ V^*(\theta) = \frac{1}{2N}\left(\sum_{i} \theta_i^2 + \sum_j \sum_{k \neq j} \theta_k \theta_j \right)  \]
+  Now, we note that
+  \[  \sum_i \sum_{j \neq i} \theta_j^2 = \sum_i \left(- \theta_i^2 + \sum_{j} \theta_j^2\right) = (N-1)\sum_i \theta_i^2  \]
+  \[ \sum_i \theta_i^2 = \sum_i \left(\frac{1}{N-1}\sum_{j \neq i} \theta_j^2 \right) \]
+  and
+  \[ \sum_i \sum_{j \neq i} \sum_{k \neq j, i} \theta_j \theta_k = \sum_i \sum_{j \neq i} \left( - \theta_j \theta_i + \sum_{k \neq j} \theta_j \theta_k \right) \]
+  \[ = \sum_i \left( - \sum_{j \neq i} \theta_j \theta_i + \sum_{j \neq i} \sum_{k \neq j} \theta_j \theta_k \right) \]
+  \[ = \sum_i \left( - \sum_{j \neq i} \theta_j \theta_i -\sum_{k \neq i} \theta_i \theta_k + \sum_{j} \sum_{k \neq j} \theta_j \theta_k \right) \]
+  \[ = \sum_i \left( - 2\sum_{j \neq i} \theta_j \theta_i\right) + N \sum_{j} \sum_{k \neq j} \theta_j \theta_k  \]
+  \[ = (N-2) \sum_{j} \sum_{k \neq j} \theta_j \theta_k  \]
+  \[ \sum_j \sum_{k \neq j} = \sum_i  \left( \frac{1}{N-2}\sum_{j \neq i} \sum_{k \neq j, i} \theta_j \theta_k \right) \]
+  Putting these together with our previous derivation, we get
+  \[ V^*(\theta) = \frac{1}{2N}\left(\sum_{i} \theta_i^2 + \sum_j \sum_{k \neq j} \theta_k \theta_j \right)  \]
+  \[ = \frac{1}{2N}\left(\sum_i \left(\frac{1}{N-1}\sum_{j \neq i} \theta_j^2 \right) + \sum_i  \left( \frac{1}{N-2}\sum_{j \neq i} \sum_{k \neq j, i} \theta_j \theta_k \right) \right)  \]
+  \[ = \sum_i \left(\frac{1}{2N(N-1)}\sum_{j \neq i} \theta_j^2 \right) + \sum_i  \left( \frac{1}{2N(N-2)}\sum_{j \neq i} \sum_{k \neq j, i} \theta_j \theta_k \right)  \]
+  \[ = \sum_i \left(\frac{1}{2N(N-1)}\sum_{j \neq i} \theta_j^2 + \frac{1}{2N(N-2)}\sum_{j \neq i} \sum_{k \neq j, i} \theta_j \theta_k \right)  \]
+  Then if we let
+  \[ V_i(\theta_{-i}) = \frac{1}{2N(N-1)}\sum_{j \neq i} \theta_j^2 + \frac{1}{2N(N-2)}\sum_{j \neq i} \sum_{k \neq j, i} \theta_j \theta_k \]
+  we get $V^*(\theta) = \sum_i V_i(\theta_{-i})$ and hence an ex-post efficient outcome is truthfully implementable in dominant strategies.
+  \item From part a, we know that $V^*(\theta) = \sum_i V_i(\theta_{-i})$ for some $V_i$. Then
+  \[ \frac{\partial^I}{\partial \theta_1 \ \partial \theta_2 ... \partial \theta_I} V^*(\theta) =  \sum_i \frac{\partial^I}{\partial \theta_1 \ \partial \theta_2 ... \partial \theta_I} V_i(\theta_{-i}) = \sum_i 0 = 0 \]
+  Since $\partial V_i / \partial \theta_i = 0$, since there is no $\theta_i$ dependence in $V_i$. Hence this is a necessary condition for an ex post efficient social choice function to exist.
+  \item Let $I=2$. By efficiency,
+  \[ V^*(\theta_1, \theta_2) = \max_k (v_1(k, \theta_1) + v_2(k, \theta_2)) \]
+  Applying the envelope theorem,
+  \[ \frac{\partial V^*}{\partial \theta_1} = \frac{\partial v_1(k^*(\theta), \theta_1)}{\partial \theta_1} \]
+  \[ \frac{\partial^2 V^*}{\partial \theta_1 \partial \theta_2} = \frac{\partial^2 v_1(k^*(\theta), \theta_1)}{\partial k \partial \theta_1}\frac{\partial k^*}{\partial \theta_2} \]
+  Now, since $k^*(\theta)$ maximizes $v_1(k, \theta_1) + v_2(k, \theta_2)$, we get the FOC:
+  \[ \frac{\partial v_1(k^*(\theta), \theta_1)}{\partial k} + \frac{\partial v_2(k^*(\theta), \theta_2)}{\partial k}  = 0 \]
+  Applying the implicit function theorem, we get
+  \[ \frac{\partial k^*}{\partial \theta_2} = \frac{\frac{\partial^2 v_2(k^*(\theta), \theta_2)}{\partial k \partial \theta_2}}{\frac{\partial^2 v_1(k^*(\theta), \theta_1)}{\partial^2 k} + \frac{\partial^2 v_2(k^*(\theta), \theta_2)}{\partial^2 k}} \]
+  Plugging in, we get
+  \[ \frac{\partial^2 V^*}{\partial \theta_1 \partial \theta_2} = \frac{\frac{\partial^2 v_1(k^*(\theta), \theta_1)}{\partial k \partial \theta_1}\frac{\partial^2 v_2(k^*(\theta), \theta_2)}{\partial k \partial \theta_2}}{\frac{\partial^2 v_1(k^*(\theta), \theta_1)}{\partial^2 k} + \frac{\partial^2 v_2(k^*(\theta), \theta_2)}{\partial^2 k}} \neq 0 \]
+  since $\frac{\partial^2 v_1(k^*(\theta), \theta_1)}{\partial k \partial \theta_1} \neq 0, \frac{\partial^2 v_2(k^*(\theta), \theta_2)}{\partial k \partial \theta_2} \neq 0$, and $\frac{\partial^2 v_1(k^*(\theta), \theta_1)}{\partial^2 k} + \frac{\partial^2 v_2(k^*(\theta), \theta_2)}{\partial^2 k} < 0$.
+  Since $\frac{\partial^2 V^*}{\partial \theta_1 \partial \theta_2 } \neq 0$, by the contrapositive of part c, we cannot have any ex-post efficient outcome that is truthfully implementable in dominant strategies.
+  \end{enumerate}
+
+\section*{Problem 5}
+We show that if $|X| = 2$, majority vote suffices, with ties broken randomly. That is, we choose the preferred option of the majority of the individuals. This is well-defined since we assume no indifference and there are only 2 alternatives, so one of the two alternatives must have a majority wanting it. Clearly, majority vote is not dictatorial. We just have to check efficiency and dominant IC.
+
+For efficiency, suppose the selection $x$ is not efficient. Since $|X| = 2$, the other alternative $x'$ must be such that $x' \succeq_{\theta_i} x$ for all $i$, and $x' \succ_{\theta_i} x$ for some $i$. Since we assume no indifference, this implies that $x$ cannot have been the majority vote, since for every individual, $x' \succeq_{\theta_i} x$. Since no inefficient alternative can possibly be the majority vote, the majority vote must be efficient.
+
+Now, we check IC. Fix the social choice as $x$. Suppose individual $i$ submitted preference $x \succeq x'$. Then clearly $i$ cannot do better submitting $x' \succeq x$, since $i$ already has achieved their best possible outcome (of the two choices). Now, suppose $i$'s preferences are $x' \succeq x$. Then by submitting a deviation ($x \succeq x'$), majority vote on the deviation must also be $x$ (if a majority supported $x$ before $i$ changed votes, then a majority still must support $x$ if $i$ joins them). Hence no matter what preference any individual has, dominant IC is satisfied.
+
+So majority rule is efficient, non-dictatorial, and dominant IC.
+
+\end{document}
+	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
