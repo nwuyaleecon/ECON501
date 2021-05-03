@@ -1,0 +1,248 @@
+%Jennifer Pan, August 2011
+
+\documentclass[10pt,letter]{article}
+	% basic article document class
+	% use percent signs to make comments to yourself -- they will not show up.
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+	% packages that allow mathematical formatting
+
+\usepackage{graphicx}
+\usepackage{tikz}
+	% package that allows you to include graphics
+
+\usepackage{setspace}
+	% package that allows you to change spacing
+
+\onehalfspacing
+	% text become 1.5 spaced
+
+\usepackage{fullpage}
+	% package that specifies normal margins
+
+
+\begin{document}
+	% line of code telling latex that your document is beginning
+
+
+\title{ECON501 Problem Set 4}
+
+\author{Nicholas Wu}
+
+\date{Spring 2021}
+	% Note: when you omit this command, the current dateis automatically included
+
+\maketitle
+	% tells latex to follow your header (e.g., title, author) commands.
+
+\section*{Problem 2}
+\begin{enumerate}[label=(\alph*)]
+\item Let the probability of low type be $p$, and let $q$ be the probability the high type chooses $e_2^*$. Then Bayes rule implies the wages are
+\[ w(e_2^*)  = \theta_H \]
+\[ w(e_1^*) = \frac{p \theta_L + (1-p)(1-q) \theta_H}{p + (1-p)(1-q)} \]
+To satisfy incentives for staying on-path, we set $w(e) = \theta_L$ for $e \neq e_1^*, e_2^*$. Then the on-path incentives require that
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) \ge u(w(e_2^*)) - c(e_2^*, \theta_L) \]
+in order for the low type to choose $e_1^*$ and
+\[ u(w(e_2^*)) - c(e_2^*, \theta_H) = u(w(e_1^*)) - c(e_1^*, \theta_H) \]
+in order for high type to randomize. Rearranging the first
+\[ c(e_2^*, \theta_L) - c(e_1^*, \theta_L) \ge u(w(e_2^*)) - u(w(e_1^*))  \]
+and the second gives
+\[ u(w(e_2^*)) - u(w(e_1^*))= c(e_2^*, \theta_H)  - c(e_1^*, \theta_H) \]
+But note that because of strict single crossing,
+\[ c(e_2^*, \theta_L) - c(e_1^*, \theta_L) \ge c(e_2^*, \theta_H)  - c(e_1^*, \theta_H) \]
+And hence the inequality automatically follows from the equality. Hence the inequality constraint is redundant. We now just have to check that there are no deviations off-path. Since cost is increasing, and any off-path $e$ yields $\theta_L$ wage, the best possible deviation is to 0, so we require
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) \ge u(\theta_L) - c(0, \theta_L) \]
+\[ u(w(e_2^*)) - c(e_2^*, \theta_H) \ge u(\theta_L) - c(0, \theta_H) \]
+Note by the existing constraint,
+\[ u(w(e_2^*)) - u(w(e_1^*))= c(e_2^*, \theta_H)  - c(e_1^*, \theta_H) \]
+\[ u(w(e_2^*)) - c(e_2^*, \theta_H)= u(w(e_1^*)) - c(e_1^*, \theta_H) \ge u(w(e_1^*)) - c(e_1^*, \theta_L)\]
+Hence the off-path deviation IC is redundant for the high type. So the only nonredundant constraints are:
+\[ u(w(e_2^*)) - u(w(e_1^*))= c(e_2^*, \theta_H)  - c(e_1^*, \theta_H) \]
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) \ge u(\theta_L) - c(0, \theta_L) \]
+and these characterize $e_1^*, e_2^*$ and $q$.
+
+\item As before, let the probability of low type be $p$, and let $q$ be the probability the low type chooses $e_2^*$. Then Bayes rule implies the wages are
+\[ w(e_2^*)  =  \frac{p q \theta_L + (1-p) \theta_H}{p q  + (1-p)}  \]
+\[ w(e_1^*) =\theta_L \]
+As before, we set $w(e) = \theta_L$ for $e \neq e_1^*, e_2^*$. The on-path IC constraints are
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) = u(w(e_2^*)) - c(e_2^*, \theta_L) \]
+\[ u(w(e_2^*)) - c(e_2^*, \theta_H) \ge u(w(e_1^*)) - c(e_1^*, \theta_H) \]
+Rewriting, we have
+\[  c(e_2^*, \theta_L) - c(e_1^*, \theta_L) = u(w(e_2^*)) - u(w(e_1^*)) \]
+\[ u(w(e_2^*)) - u(w(e_1^*))  \ge c(e_2^*, \theta_H) - c(e_1^*, \theta_H) \]
+But strict single crossing implies that $c(e_2^*, \theta_L) - c(e_1^*, \theta_L) \ge c(e_2^*, \theta_H) - c(e_1^*, \theta_H)$, and hence the equality implies the inequality. Again, we check IC for off-path deviations
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) \ge u(\theta_L) - c(0, \theta_L) \]
+\[ u(w(e_2^*)) - c(e_2^*, \theta_H) \ge u(\theta_L) - c(0, \theta_H) \]
+Note that
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) = u(w(e_2^*)) - c(e_2^*, \theta_L) \le u(w(e_2^*)) - c(e_2^*, \theta_H) \]
+Hence the first inequality implies the second. Therefore, the nonredundant constraints are
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) = u(w(e_2^*)) - c(e_2^*, \theta_L) \]
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) \ge u(\theta_L) - c(0, \theta_L) \]
+\item For part (a): Take $w$ as specified in part (a). We know by strict single crossing that
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) > u(w(e_2^*)) - c(e_2^*, \theta_L) \]
+Since this equality is strict and $c$ is continuouss, we can pick some $\varepsilon$ such that
+\[ u(w(e_1^*)) - c(e_1^*, \theta_L) > u(w(e_2^*)) - c(e_2^* - \varepsilon, \theta_L) \]
+Consider what happens if the high type chooses $e_2^* - \varepsilon$. Clearly, it is unreasonable to believe that this level of effort was chosen by the low type, since the choice of $\varepsilon$ ensures that the low type prefers choosing $e_1^*$. So the reasonable belief is that this type corresponds to $e_2^*$, and paying $\theta_H$ means that this would be a profitable deviation for the high type. (The only reason the high type doesn't decrease their $e$ is because of the empty threat of $w(e) = \theta_L$, which does not make sense). Hence this fails the intuitive criterion.
+
+Consider part (b). Take $w$ as in part (b). By strict single crossing, for any $e^* > e_2^*$
+\[ c(e^*, \theta_L) - c(e_2^*, \theta_L) > c(e^*, \theta_H) - c(e_2^*, \theta_H)  \]
+Rewriting,
+\[ c(e^*, \theta_L) - c(e_2^*, \theta_L) > c(e^*, \theta_H) - c(e_2^*, \theta_H)  \]
+Note that $\theta_H > w(e_2^*)$. So $ u(\theta_H) - u(w(e_2^*)) > 0 $.
+\[ f(e^*) = c(e^*, \theta_L) - c(e_2^*, \theta_L)  \]
+\[ g(e^*) = c(e^*, \theta_H) - c(e_2^*, \theta_H) \]
+Then we can rewrite the strict single crossing condition as for all $e^* > e_2^*$,
+\[ f(e) > g(e) \]
+Note that at $f(e_2^*) = g(e_2^*) = 0 < u(\theta_H) - u(w(e_2^*))$. Since both $f$ and $g$ are increasing and unbounded because $c$ is increasing and unbounded, and $f(e) > g(e)$ at all $e > e_2^*$, we can select some $e'$ such that $f(e') > u(\theta_H) - u(w(e_2^*)) > g(e')$. That is,
+\[ c(e', \theta_L) - c(e_2^*, \theta_L) > u(\theta_H) - u(w(e_2^*))\]
+\[ u(\theta_H) - u(w(e_2^*)) > c(e', \theta_H) - c(e_2^*, \theta_H) \]
+or
+\[ u(w(e_2^*)) - c(e_2^*, \theta_L) > u(\theta_H) - c(e', \theta_L)\]
+\[ u(\theta_H) - c(e', \theta_H) > u(w(e_2^*)) - c(e_2^*, \theta_H) \]
+Now, consider choosing $e'$. Clearly, as we just showed, this is not incentivized for the low type, since even a payment $\theta_H$ would not justify the switch to $e'$. Hence, it is unreasonable to believe the low type chose this $e'$. However, if you pay $\theta_H$, then this is a profitable deviation for the high type. That is, this equilibrium relies on the empty threat to pay $\theta_L$ for observing this $e'$ which is unreasonable. Hence both equilibria fail the intuitive criterion.
+
+\end{enumerate}
+\section*{Problem 3}
+Let $\underline{w}$ be the wage paid to workers who don't take the test. Then workers with type above $\underline{w}$ will take the test, and be paid their type, and workers blow $\underline{w}$ will not take the test. Then Bayesian updating requires that
+\[ \underline{w} = E[\theta | \theta \le \underline{w}] \]
+However, this equality can only be satisfied if $\underline{w} = \underline{\theta}$, as otherwise the right hand side is less than the left hand side. Therefore, all workers with type above $\underline{\theta}$ take the test, and are paid as their type, and workers with $\underline{\theta}$ can take the test or not or mix, and either way will be paid $\underline{\theta}$.
+\section*{Problem 4}
+\begin{enumerate}[label=(\alph*)]
+\item Assuming increasing cost of effort, clearly inducing $e = 0$ can be satisfied by offering $w = 0$ regardless of output, as this satisfies IC, IR, and LL without costing the principal anything. Even if we observe effort, this contract is still optimal, and hence this achieves the first-best.
+\item Let $w_0$ denote the low output payment, and $w_1$ denote the high output payment. Then we have the following problem for the principal:
+\[ \max p_1(\pi_1 - w_1) + (1-p_1)(\pi_0 - w_0) \]
+subject to
+\[ p_1 w_1 + (1-p_1)w_0 - c \ge p_0 w_1 + (1-p_0)w_0  \]
+\[ p_1 w_1 + (1-p_1)w_0 - c \ge 0  \]
+\[ w_1, w_0 \ge 0 \]
+Note the first and third constraints imply the second. Rewriting the IC constraint,
+\[ p_1 w_1 - p_0 w_1 + (1-p_1)w_0 - (1-p_0)w_0 \ge  c   \]
+\[ (p_1 - p_0) (w_1 - w_0) \ge  c   \]
+Since $p_1 > p_0$, $c > 0$, we need $w_1 > w_0$. Hence, the only other constraint is $w_1 > w_0 \ge 0$. We must have $w_0 = 0$, else we can decrease both $w_1$ and $w_0$ equally without affecting IC. Then we just require
+\[ w_1 \ge \frac{c}{p_1 - p_0} \]
+This is tight at optimum, otherwise we can decrease $w_1$ and increase the principal's payoff. Hence, the contract is
+\[ w_0 = 0 \]
+\[ w_1 = \frac{c}{p_1 - p_0} \]
+Note that $p_1 - p_0 < 1$, so $w_1 > c$. Hence first-best is not achieved, since if effort was observable the principal can just offer $c$ upon observing effort and 0 otherwise.
+\end{enumerate}
+\section*{Problem 5}
+\begin{enumerate}[label=(\alph*)]
+\item When effort is observable, the principal problem is
+\[ \max_{e_i} 10 f(\pi_H|e_i) - w(e_i) \]
+subject to
+\[  v(w(e_i)) \ge g(e_i)\]
+We can rewrite the constraint as
+\[ w(e_i) \ge g(e_i)^2 \]
+Since the constraint must bind at optimum, we get the reduced problem
+\[ \max_{e_i} 10 f(\pi_H|e_i)  - g(e_i)^2 \]
+We can just plug in numbers and check now which $e_i$ optimizes this. The optimal choice is $e_1$ for a constant wage of $25/9$.
+\item As in the hint, we let $v_H$ and $v_L$ be the induced utilities from $\sqrt{w(\pi_H)}$ and $\sqrt{w(\pi_L)}$ respectively. In order for $e_2$ to be implementable, we need
+\[ \frac{1}{2}v_H + \frac{1}{2} v_L - g(e_2) \ge 0 \]
+\[ \frac{1}{2}v_H + \frac{1}{2} v_L - g(e_2) \ge \frac{2}{3}v_H + \frac{1}{3}v_L - \frac{5}{3} \]
+\[ \frac{1}{2}v_H + \frac{1}{2} v_L - g(e_2) \ge \frac{1}{3}v_H + \frac{2}{3}v_L - \frac{4}{3} \]
+Rewriting, we get
+\[ \frac{1}{2}(v_H + v_L) \ge g(e_2) \]
+\[   \frac{1}{6} (v_H - v_L) \le \frac{5}{3} - g(e_2)\]
+\[ \frac{1}{6}(v_H - v_L)  \ge g(e_2) - \frac{4}{3}\]
+Combining the last two,
+\[ \frac{1}{2}(v_H + v_L) \ge g(e_2) \]
+\[  g(e_2) - \frac{4}{3} \le \frac{1}{6} (v_H - v_L) \le \frac{5}{3} - g(e_2)\]
+Note for $g(e_2) = 8/5$ the second inequality chain is impossible, since $4/15 \not\le 1/15$. The second expression gives
+\[ 2 g(e_2) \le 3 \]
+\[ g(e_2) \le \frac{3}{2} \]
+So this is required for $e_2$ to be implementable
+\item When effort is not observable, we can only implement $e_1$ or $e_3$. To implement $e_3$, we can just offer constant wage $16/9$, and the expected principal payoff is just $14/9$. To implement $e_1$, the problem is given by
+\[ \max \frac{2}{3}(10 - v_H^2) - \frac{1}{3} v_L^2 \]
+subject to
+\[ \frac{2}{3}v_H + \frac{1}{3}v_L - \frac{5}{3} \ge 0 \]
+\[ \frac{2}{3}v_H + \frac{1}{3}v_L - \frac{5}{3} \ge \frac{1}{3}v_H + \frac{2}{3}v_L - \frac{4}{3} \]
+Rewriting, dropping constant terms from the maximization objective, we get
+\[ \min 2 v_H^2 + v_L^2 \]
+\[ 2v_H + v_L \ge 5 \]
+\[ v_H - v_L  \ge 1 \]
+Now, note the IR constraint must bind, else we can lower $v_H$ and $v_L$ equally, and this will improve the objective. Also, the IC constraint must also bind, else we can decrease $v_H$ by $\epsilon$ and increase $v_L$ by $2\epsilon$ and we get
+\[2 (v_H - \epsilon)^2 + (v_L + 2\epsilon)^2 = 2(v_H^2 - 2v_H\epsilon + \epsilon^2) + (v_L^2 + 4v_L\epsilon + 4\epsilon^2) \]
+\[ = (2v_H^2 + v_L^2) + 4v_L\epsilon + 4\epsilon^2 - 4v_H\epsilon + 2\epsilon^2 \]
+\[ = (2v_H^2 + v_L^2) - 2\epsilon(2(v_H - v_L) - 3\epsilon )  \]
+Since by the contradiction assumption $v_H - v_L > 1$, as long as $\epsilon < 2/3$,
+\[ (2v_H^2 + v_L^2) - 2\epsilon(2(v_H - v_L) - 3\epsilon ) <  (2v_H^2 + v_L^2) - 2\epsilon(2 - 3\epsilon) <  2v_H^2 + v_L^2 \]
+Hence the IC constraint must bind. Then we uniquely have
+\[ v_H = 2, v_L = 1 \]
+so the original principal's value is
+\[ \frac{2}{3}(10 - 4) - \frac{1}{3}(1) = \frac{11}{3} \]
+Note that $11/3 > 14/9$, hence the optimal contract induces effort $e_1$ and offers wage:
+\[ w_H = 4, w_L = 1 \]
+\item If effort is observable, the reduced problem is
+\[ \max_{e_i} 10 f(\pi_H|e_i)  - g(e_i)^2 \]
+We can check for $e_3$ this is $14/9$, for $e_2$ this is $61/25$, and for $e_1$ this is
+\[ 10x - 8 \]
+As $x \to 1$, this approaches 2. In any case, the optimal contract induces effort $e_2$ and pays $64/25$. If effort is not observable, inducing $e_3$ reqires payment $16/9$ for payoff $14/9$. For inducing $e_2$, we have
+\[ \max \frac{1}{2}(10 - v_H^2) - \frac{1}{2} v_L^2 \]
+subject to
+\[ \frac{1}{2}v_H + \frac{1}{2} v_L - \frac{8}{5} \ge 0 \]
+\[ \frac{1}{2}v_H + \frac{1}{2} v_L - \frac{8}{5} \ge xv_H + (1-x)v_L - \sqrt{8} \]
+\[ \frac{1}{2}v_H + \frac{1}{2} v_L - \frac{8}{5} \ge \frac{1}{3}v_H + \frac{2}{3}v_L - \frac{4}{3} \]
+rewriting the constraints,
+\[ \frac{1}{2}v_H + \frac{1}{2} v_L - \frac{8}{5} \ge 0 \]
+\[ (x - \frac{1}{2})(v_H - v_L)  \le  \sqrt{8} - \frac{8}{5} \]
+\[ \frac{1}{6}(v_H - v_L)  \ge \frac{8}{5} - \frac{4}{3} \]
+IR must bind, else we can uniformly  decrease $v_H$ and $v_L$. By a similar argument in the previous part, the third constraint (second IC) must bind, else we can decrease $v_H$ and increase $v_L$ by some $\epsilon$ and get a better objective. Hence we get
+\[ v_H + v_L = \frac{16}{5}  \]
+\[ v_H - v_L  =  \frac{8}{5}  \]
+\[ v_H = \frac{12}{5}, v_L = \frac{4}{5} \]
+So the maximized objective is then
+\[ (5 - 72/25) - (8/25) = (5 - 80/25) = 5 - 16/5 = 9/5 \]
+To induce $e_1$, we have
+\[ \max x(10 - v_H^2) - (1-x) v_L^2 \]
+subject to
+\[ xv_H + (1-x)v_L - \sqrt{8} \ge 0 \]
+\[ xv_H + (1-x)v_L - \sqrt{8} \ge \frac{1}{2}v_H + \frac{1}{2} v_L - \frac{8}{5} \]
+\[ xv_H + (1-x)v_L - \sqrt{8} \ge \frac{1}{3}v_H + \frac{2}{3}v_L - \frac{4}{3} \]
+Rewriting in the usual way,
+\[ xv_H + (1-x)v_L \ge  \sqrt{8} \]
+\[ (x - 1/2)(v_H- v_L) \ge  \sqrt{8}  - \frac{8}{5} \]
+\[ (x - 1/3)(v_H- v_L) \ge  \sqrt{8}  - \frac{4}{3} \]
+or
+\[ xv_H + (1-x)v_L \ge  \sqrt{8} \]
+\[ v_H- v_L \ge  \frac{1}{x - 1/2}(\sqrt{8}  - \frac{8}{5}) \]
+\[ v_H- v_L \ge  \frac{1}{x - 1/3}(\sqrt{8}  - \frac{4}{3}) \]
+as $x \to 1$, the IC constraints become
+\[ v_H- v_L \ge  2\sqrt{8}  - \frac{16}{5} \]
+\[ v_H- v_L \ge  \frac{3}{2}\sqrt{8}  - 2 \]
+So the second constraint is redundant. IR must bind, so we get
+\[v_H = \sqrt{8}, v_L = 16/5 - \sqrt{8} \]
+And the payoff to the principal is
+\[  x(10 - v_H^2) - (1-x) v_L^2 = 2 \]
+Note that this is larger than $9/5$ and $14/9$. So the optimal contract induces effort $e_1$, with wages
+\[ w_H = 8, w_L = \left(16/5 - \sqrt{8} \right)^2 \]
+Note that when effort is unobservable, the optimal contract induces higher effort than when unobservable.
+\end{enumerate}
+\section*{Problem 6}
+The principal problem is
+\[ \max_{e, w} f(\pi_H | e)(\pi_H - w_{e,H}) + (1-f(\pi_H | e))(\pi_L - w_{e,L}) \]
+subject to
+\[ f(\pi_H | e)v(w_{e,H}) + (1-f(\pi_H | e))v(w_{e,L}) - c(e) \ge 0\]
+\[ e \in \arg\max_e f(\pi_H | e)v(w_{e,H}) + (1-f(\pi_H | e))v(w_{e,L}) - c(e) \]
+Rewriting IC,
+\[ e \in \arg\max_e f(\pi_H | e)(v(w_{e,H}) - v(w_{e,L})) + v(w_{e,L}) - c(e) \]
+
+For the first order approach to be valid, we need the objective in the IC constraint to be concave. Sufficient conditions would be requiring $c$ to be convex, $f(\pi_H | e)$ to be concave in $e$, and $v(w_{e,H}) - v(w_{e,L})$ to be positive. Under these conditions, the FOC is
+\[ \left(\frac{\partial}{\partial e}f(\pi_H | e)\right)(v(w_{e,H}) - v(w_{e,L})) - c'(e) = 0 \]
+Note that at optimum, IR binds, so we get
+\[ f(\pi_H | e)v(w_{e,H}) + (1-f(\pi_H | e))v(w_{e,L}) = c(e)\]
+Solving for $v(w_{e,L})$ and $v(w_{e,H})$, we get
+\[ v(w_{e,H}) - v(w_{e,L})  = \frac{c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} \]
+\[ f(\pi_H | e)(v(w_{e,H}) - v(w_{e,L})) + v(w_{e,L}) = c(e)\]
+\[ f(\pi_H | e)\frac{c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} + v(w_{e,L}) = c(e)\]
+\[  v(w_{e,L}) = c(e) - f(\pi_H | e)\frac{c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} \]
+\[ v(w_{e,H}) = c(e) - f(\pi_H | e)\frac{c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} + \frac{c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} = c(e) + \frac{(1-f(\pi_H|e))c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} \]
+Then the unconstrained principal problem is
+\[ \max_e f(\pi_H|e)\left(\pi_H - v^{-1}\left(c(e) + \frac{(1-f(\pi_H|e))c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} \right) \right) + (1-f(\pi_H|e))\left(\pi_L - v^{-1}\left( c(e) - f(\pi_H | e)\frac{c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} \right) \right)\]
+and so the choice of $e$ maximizes this, and the contract is
+\[ w_H = v^{-1}\left(c(e) + \frac{(1-f(\pi_H|e))c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} \right) \]
+\[ w_L = v^{-1}\left( c(e) - f(\pi_H | e)\frac{c'(e)}{\frac{\partial}{\partial e}f(\pi_H | e)} \right) \]
+
+\end{document}
+	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
