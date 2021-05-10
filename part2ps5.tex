@@ -1,0 +1,90 @@
+%Jennifer Pan, August 2011
+
+\documentclass[10pt,letter]{article}
+	% basic article document class
+	% use percent signs to make comments to yourself -- they will not show up.
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+	% packages that allow mathematical formatting
+
+\usepackage{graphicx}
+\usepackage{tikz}
+	% package that allows you to include graphics
+
+\usepackage{setspace}
+	% package that allows you to change spacing
+
+\onehalfspacing
+	% text become 1.5 spaced
+
+\usepackage{fullpage}
+	% package that specifies normal margins
+
+
+\begin{document}
+	% line of code telling latex that your document is beginning
+
+
+\title{ECON501 Problem Set 4}
+
+\author{Nicholas Wu}
+
+\date{Spring 2021}
+	% Note: when you omit this command, the current dateis automatically included
+
+\maketitle
+	% tells latex to follow your header (e.g., title, author) commands.
+
+\section*{Problem 2}
+\begin{enumerate}[label=(\alph*)]
+\item We showed that majority voting satisfies this.
+\item Consider a discrete set of 3 alternatives. If the preferences are all single-peaked, then pairwise majority works.
+\item Pairwise majority works, but is not necessarily transitive.
+\item The Borda count works if we drop IIA.
+\item Fix a preference, and consider the constant SWF that always returns that preference. This trivially satisfies all the conditions except efficiency.
+\item Dictatorship works: the social choice function is just the preferences of one individual.
+\end{enumerate}
+\section*{Problem 3}
+\begin{enumerate}[label=(\alph*)]
+\item The difference is an indication of distributional skew. If $\bar{w} < w^*$, then the distribution is being skewed by unusually low-wealth individuals. If $\bar{w} > w^*$, then the distribution is being skewed by abnormally high-wealth individuals.
+\item To show that preferences are single-peaked, consider the after-tax wealth:
+\[ (1-t)w_i + t\bar{w} = w_i + t(\bar{w} - w_i) \]
+Note that an individual with wealth $w_i$ wants $t$ as small as possible if $w_i > \bar{w}$, and $t$ as large as possible if $\bar{w} > w_i$. Hence preferences are single-peaked. Also, if $w^* < \bar{w}$  then a majority of the individuals prefer $t$ as large as possible, so the Condorcet winner is $t = 1$. If $w^* > \bar{w}$  then a majority of the individuals prefer $t$ as small as possible, so the Condorcet winner is $t = 0$.
+\item In this case, the after tax wealth is
+\[ (1-t)^2 w_i + t(1-t)\bar{w} \]
+Differentiating wrt $t$, we get
+\[ 2(t-1)w_i + (1-2t)\bar{w} \]
+\[ =\bar{w} - 2 w_i + 2tw_i -2t \bar{w} \]
+And the second derivative is
+\[ 2w_i - 2\bar{w}  \]
+So for $w_i > \bar{w}$, the maximal tax rate is a corner solution $t = 0$. For $w_i < \bar{w}$ the maximal rate $t$ satisfies
+\[ 2t \bar{w}-2tw_i  =\bar{w} - 2 w_i \]
+\[ 2t (\bar{w}-w_i)  =\bar{w} - 2 w_i \]
+\[ t = \frac{\bar{w} - 2 w_i}{ 2(\bar{w}-w_i)} = \frac{1}{2} - \frac{w_i}{2(\bar{w}-w_i)} \]
+Note that this is always less than $1/2$, so $t_c \le 1/2$. If $w^* > \bar{w}/2$, then note that everyone with wealth above $\bar{w} / 2$ will prefer $t = 0$, so the Condorcet winner is $0$ here. If $w^* < \bar{w}/2$, then a majority will want a positive $t$, so $t > 0$.
+\end{enumerate}
+\section*{Problem 4}
+\begin{enumerate}[label=(\alph*)]
+\item Normalize the disagreement point to the origin. Denote the boundary curve in the positive orthant to be $C(u_1,u_2 ) = 0$. We know that the Nash solution maximizes $u_1u_2$ on this curve. Let $u_1^*, u_2^*$ be the Nash solution, and fix $c=u_1^*u_2^*$. Consider the line:
+\[ u_2^* u_1 + u_1^* u_2 = 2c \]
+This line contains $(0, 2u_2^*)$ and $(2u_1^*, 0)$, and so its midpoint is $(u_1^*, u_2^*)$. Further, this line is tangent to the curve $u_1^*u_2^* = c$, and hence since $u_1u_2 = c$ is tangent to $C(u_1, u_2) = 0$ at exactly the Nash solution, we have that the line we provided is tangent to $U$. So this line has the property we need.
+\item Suppose the Nash solution to the unscaled problem is $u_1^*, u_2^*, ...$. WLOG, let $u_1^* \ge u_i^*$. Consider scaling the $i$th player's utility by a factor $\phi_i = u_1^*/u_i^*$ and the first player's utility by a factor $\phi_1 = 1$. That is, define $u_i' = \phi_i u_i$, and consider the transformed image of $U$, $U'$.
+Then the Nash solution maximizes $\prod_i u'_i = \prod_i \phi_i u_i$, and hence the maximum on $U'$ must be achieved by $\phi_1 u_1^*, \phi_2 u_2^*, ...$, else we could scale down our solution on $U'$ to obtain a higher product on $U$, which is a contradiction.
+But using the definition of $\phi_i$, the maximum is exactly $k = (u_1^* , u_1^*, ... )$.
+
+This must also be the egalitarian solution, since if $(a, a, a, ..)$ is in $U'$ for $a > u_1^*$, then $a^N > (u_1^*)^n$, a contradiction of optimality of the Nash solution.
+
+This is also the utilitarian solution; suppose, for sake of contradiction, that we had some other solution $x = (x_1, x_2, ...) \in U'$, and $\sum x_i > \sum u_i^* $. By convexity, any point on the line between $k$ and $x$ must be in $U'$. But the line between $k$ and $x$ must intersect the curve $\prod u_i = (u_1^*)^n$ at some other point $x'$, since $\sum x_i > \sum u_i^* $.
+Then for any $\alpha \in (0,1)$, the new point $\alpha k + (1-\alpha) x'$ must be in $U'$ by convexity, but by concavity of the curve $\prod u_i = (u_1^*)^n$, the new point $\alpha k + (1-\alpha) x'$ must have component product larger than the Nash solution. So we have a contradiction, and therefore no such other solution $x,y$ can exist. So the Nash solution must also be the utilitarian solution.
+\end{enumerate}
+\section*{Problem 5}
+\begin{enumerate}[label=(\alph*)]
+\item Pareto efficiency: Always choose the disagreement point $(0,0)$. Trivially scale invariant, IIA, and symmetric.
+\item IIA: the Kalai-Smorodinsky solution works as cited in MWG. That is, let $u^i$ denote the maximum value of agent $i$'s utility in $U$. The Kalai-Smorodinsky solution is the point on the Pareto frontier in the direction of $(u^1, u^2, ... u^n)$. It is on the Pareto frontier, so it is optimal, and scaling any agents utility scales their maximum value and hence this is scale invariant. Finally, this is trivially symmetric, because the solution is in the direction $(1,1,1,1,1...)$ in the symmetric case.
+\item Scale invariance: Consider the utilitarian solution. This trivially satisfies symmetry and IIA. It is also Pareto efficient, since any Pareto dominating point must also have higher total utility. It is not scale-invariant.
+\item Symmetry: Consider the solution that solves $u_1^* = \arg\max_{(u_1, u_2) \in U} u_1$, and then maximizes $u_2$ subject to $u_1 = u_1^*$. Clearly, this is Pareto efficient, since player 1 cannot get anything better. This is also IIA, since the maximization is unaffected by removing non-mazimizing options. It is also scale-invariant, since the maximization does not change under multiplications or additions of positive constants.
+\end{enumerate}
+\end{document}
+	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
